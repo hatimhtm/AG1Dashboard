@@ -1,116 +1,116 @@
 # AG1 Dashboard - iOS App 📊
 
-> Application SwiftUI moderne pour l'analyse des performances publicitaires Meta Ads.
+> Modern SwiftUI application for Meta Ads performance analytics.
 > **iOS 17+ | Swift 5.9 | SwiftUI Charts**
 
-## ✨ Fonctionnalités iOS 17+
+## ✨ iOS 17+ Features
 
 | Feature | Description |
 |---------|-------------|
-| 🎯 Symbol Effects | Animations `.bounce`, `.pulse`, `.wiggle` |
-| 📳 Sensory Feedback | Haptics contextualisés (selection, impact, notification) |
-| 🔢 Content Transitions | `.numericText()` pour les KPIs animés |
-| 📊 Chart Selection | Sélection interactive sur les graphiques |
-| 🔍 Search Suggestions | Suggestions de recherche natives |
-| 📱 Dynamic Island | Support Live Activities pour tracking temps réel |
+| 🎯 Symbol Effects | `.bounce`, `.pulse`, `.wiggle` animations |
+| 📳 Sensory Feedback | Contextual haptics (selection, impact, notification) |
+| 🔢 Content Transitions | `.numericText()` for animated KPIs |
+| 📊 Chart Selection | Interactive chart selection |
+| 🔍 Search Suggestions | Native search suggestions |
+| 📱 Dynamic Island | Live Activities support for real-time tracking |
 | 🎨 Material Backgrounds | `.regularMaterial` blur effects |
 
-## 📱 Écrans
+## 📱 Screens
 
 ### 1. Overview (Dashboard)
-- 6 KPIs avec animations `.bounce`
-- Charts ROAS/Mois avec sélection interactive
-- Charts Budget/Produit
-- Top 5 créas par ROAS
-- Top 5 créateurs par conversions
-- Pull-to-refresh avec haptics
+- 6 KPIs with `.bounce` animations
+- ROAS/Month charts with interactive selection
+- Budget/Product charts
+- Top 5 creatives by ROAS
+- Top 5 creators by conversions
+- Pull-to-refresh with haptics
 
-### 2. Liste des Créas
-- Recherche intelligente avec suggestions iOS 17
-- Filtres: Produit, Mois, Statut, Type
-- Tri: ROAS ↑↓, Budget ↑↓, Conversions ↑↓
-- Context menus avec aperçu
-- Swipe actions (favoris, archiver)
-- Presentation detents (sheet adaptive)
+### 2. Creatives List
+- Smart search with iOS 17 suggestions
+- Filters: Product, Month, Status, Type
+- Sort: ROAS ↑↓, Budget ↑↓, Conversions ↑↓
+- Context menus with preview
+- Swipe actions (favorite, archive)
+- Presentation detents (adaptive sheet)
 
-### 3. Détail Créative
-- 8 KPIs sélectionnables avec feedback
-- Flow layout pour tags
-- Animations d'entrée staggered
-- Actions rapides (éditer, dupliquer, partager)
+### 3. Creative Detail
+- 8 selectable KPIs with feedback
+- Flow layout for tags
+- Staggered entry animations
+- Quick actions (edit, duplicate, share)
 
-## 🗂 Structure du Projet
+## 🗂 Project Structure
 
 ```
 AG1Dashboard/
-├── AG1DashboardApp.swift          # Point d'entrée
-├── AG1-Data.csv                   # 1200 lignes de données mock
+├── AG1DashboardApp.swift          # Entry point
+├── AG1-Data.csv                   # 1200 rows of mock data
 ├── Theme/
-│   └── Theme.swift                # Design system complet
+│   └── Theme.swift                # Complete design system
 ├── Models/
-│   ├── Creative.swift             # Modèle de données
-│   └── FilterState.swift          # État des filtres observables
+│   ├── Creative.swift             # Data model
+│   └── FilterState.swift          # Observable filter state
 ├── ViewModels/
-│   └── DashboardViewModel.swift   # Logique métier + charts
+│   └── DashboardViewModel.swift   # Business logic + charts
 ├── Services/
-│   ├── CSVParser.swift            # Parsing CSV français
+│   ├── CSVParser.swift            # CSV parsing
 │   └── LiveActivityManager.swift  # Dynamic Island support
 └── Views/
-    ├── ContentView.swift          # Navigation adaptive
+    ├── ContentView.swift          # Adaptive navigation
     ├── Components/
-    │   └── Components.swift       # 15+ composants réutilisables
+    │   └── Components.swift       # 15+ reusable components
     └── Screens/
-        ├── OverviewView.swift     # Dashboard avec charts
-        ├── CreativesListView.swift # Liste filtrable
-        └── CreativeDetailView.swift # Vue détail
+        ├── OverviewView.swift     # Dashboard with charts
+        ├── CreativesListView.swift # Filterable list
+        └── CreativeDetailView.swift # Detail view
 ```
 
 ## 🎨 Design System
 
 ```swift
-// Couleurs
-AppTheme.Colors.primary          // Vert AG1
-AppTheme.Colors.background       // Gradient léger
+// Colors
+AppTheme.Colors.primary          // AG1 Green
+AppTheme.Colors.background       // Light gradient
 AppTheme.Colors.accentBlue/Purple/Cyan...
 
 // Animations
 AppTheme.Animations.smooth       // 0.3s easeInOut
-AppTheme.Animations.bouncy       // Spring avec rebond
-AppTheme.Animations.snappy       // Réponse rapide
+AppTheme.Animations.bouncy       // Spring with bounce
+AppTheme.Animations.snappy       // Quick response
 
 // Styles
-.cardStyle()                     // Cartes avec ombre
-.gradientBackground()            // Fond dégradé
+.cardStyle()                     // Cards with shadow
+.gradientBackground()            // Gradient background
 ```
 
-## 📊 Données Mock
+## 📊 Mock Data
 
-Le fichier `AG1-Data.csv` contient 1200 entrées avec:
-- 7 produits (AG1 Powder, Travel Packs, Vitamines...)
-- 10 créateurs différents
-- 5 types de contenu (UGC, Podcast, Vidéo, Image, Témoignage)
-- 8 angles marketing
-- 5 mois (Juillet - Novembre 2025)
-- Métriques variées (budget, conversions, ROAS, impressions...)
+The `AG1-Data.csv` file contains 1200 entries with:
+- 7 products (AG1 Powder, Travel Packs, Vitamins...)
+- 10 different creators
+- 5 content types (UGC, Podcast, Video, Image, Testimonial)
+- 8 marketing angles
+- 5 months (July - November 2025)
+- Various metrics (budget, conversions, ROAS, impressions...)
 
 ## 🚀 Installation
 
 ```bash
-# 1. Cloner le projet
-git clone <repo>
+# 1. Clone the project
+git clone https://github.com/hatimhtm/AG1Dashboard.git
 
-# 2. Ouvrir dans Xcode 15+
+# 2. Open in Xcode 15+
 open AG1Dashboard.xcodeproj
 
 # 3. Build & Run
-# Target: iOS 17.0+ Simulator ou Device
+# Target: iOS 17.0+ Simulator or Device
 ```
 
 ## 📦 Technologies
 
-- **SwiftUI** - Interface déclarative
-- **Swift Charts** - Graphiques natifs
-- **Combine** - Réactivité
+- **SwiftUI** - Declarative UI framework
+- **Swift Charts** - Native charting
+- **Combine** - Reactive programming
 - **ActivityKit** - Live Activities
 - **Observation** - @Observable macro (iOS 17)
 
@@ -122,29 +122,29 @@ MVVM Clean Architecture
 ├── ViewModels (Business logic)
 ├── Views (Presentation layer)
 │   ├── Screens (Pages)
-│   └── Components (Réutilisables)
+│   └── Components (Reusable)
 └── Services (External interfaces)
 ```
 
-## 📝 Colonnes CSV
+## 📝 CSV Columns
 
-| Colonne | Description |
-|---------|-------------|
-| Nom de l'annonce | Identifiant créative |
-| Produit | Catégorie produit |
-| Créateur | Nom du créateur |
-| Type de contenu | UGC/Podcast/Vidéo... |
-| Angle marketing | Hook principal |
-| Mois | Période de diffusion |
-| Statut | En ligne/Arrêtée/Pause/Archivée |
-| Budget dépensé (€) | Montant investi |
-| Conversions | Nombre d'achats |
+| Column | Description |
+|--------|-------------|
+| Ad Name | Creative identifier |
+| Product | Product category |
+| Creator | Creator name |
+| Content Type | UGC/Podcast/Video... |
+| Marketing Angle | Primary hook |
+| Month | Broadcast period |
+| Status | Live/Stopped/Paused/Archived |
+| Budget Spent (€) | Amount invested |
+| Conversions | Number of purchases |
 | ROAS | Return on Ad Spend |
-| Impressions | Nombre de vues |
-| Clics | Interactions |
-| Taux de clic (%) | CTR |
+| Impressions | Number of views |
+| Clicks | Interactions |
+| Click Rate (%) | CTR |
 
 ---
 
-*Développé pour ViralFactory - Test iOS Developer*
+*Developed for ViralFactory - iOS Developer Assessment*
 *iOS 17 | Swift 5.9 | SwiftUI*
