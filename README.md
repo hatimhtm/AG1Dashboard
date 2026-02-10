@@ -144,7 +144,16 @@ MVVM Clean Architecture
 | Clicks | Interactions |
 | Click Rate (%) | CTR |
 
+## 📄 License
+
+MIT
+
 ---
 
-*Developed for ViralFactory - iOS Developer Assessment*
-*iOS 17 | Swift 5.9 | SwiftUI*
+### 👤 Author
+
+**Hatim El Hassak** — Full-Stack Engineer
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=CDFF00)](https://hatimelhassak.is-a.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hatim-elhassak/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hatimelhassak.official@gmail.com)
