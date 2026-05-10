@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var selectedTab: Tab = .overview
     @State private var showSettings = false
     @Environment(\.horizontalSizeClass) var sizeClass
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     enum Tab: String, CaseIterable {
         case overview = "Overview"
@@ -37,6 +38,12 @@ struct ContentView: View {
         .onAppear { viewModel.loadData() }
         .sheet(isPresented: $showSettings) {
             NavigationStack { SettingsView() }
+        }
+        .fullScreenCover(isPresented: Binding(
+            get: { !hasCompletedOnboarding },
+            set: { hasCompletedOnboarding = !$0 }
+        )) {
+            OnboardingView()
         }
     }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="AdPulse icon">
+  <!-- Cream background -->
+  <rect width="1024" height="1024" fill="#FFFDF5"/>
+
+  <!-- Subtle grid for texture (matches the hero banner) -->
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#grid)"/>
+
+  <!-- Acid yellow corner accent — brutalist signature -->
+  <rect x="700" y="100" width="220" height="220" fill="#CCFF00" stroke="#1A1A1A" stroke-width="14"/>
+  <text x="810" y="220" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" font-size="42" fill="#1A1A1A" text-anchor="middle" letter-spacing="6">iOS</text>
+  <text x="810" y="280" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" font-size="42" fill="#1A1A1A" text-anchor="middle" letter-spacing="6">17+</text>
+
+  <!-- Big "AP." letters -->
+  <text x="100" y="720" font-family="'Helvetica Neue', 'Arial Black', Helvetica, Arial, sans-serif" font-weight="900" font-size="600" fill="#1A1A1A" letter-spacing="-30">AP<tspan fill="#CCFF00">.</tspan></text>
+
+  <!-- Mono caption underneath -->
+  <text x="100" y="900" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="700" font-size="56" fill="#1A1A1A" letter-spacing="14">PULSE</text>
+</svg>

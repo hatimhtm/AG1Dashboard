@@ -6,48 +6,54 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/STATUS-TAKE_HOME_BUILD-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Take-home build" />
+  <img src="https://img.shields.io/badge/STATUS-OPEN_SOURCE-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Open source" />
   <img src="https://img.shields.io/badge/iOS-17%2B-1A1A1A?style=for-the-badge&logo=apple&logoColor=CCFF00" alt="iOS 17+" />
   <img src="https://img.shields.io/badge/SwiftUI-1A1A1A?style=for-the-badge&logo=swift&logoColor=CCFF00" alt="SwiftUI" />
+  <img src="https://img.shields.io/badge/License-MIT-1A1A1A?style=for-the-badge&labelColor=1A1A1A" alt="MIT License" />
 </p>
 
 <p align="center">
-  <em>Creative analytics dashboard for iOS — built as a take-home for an iOS engineer interview. Demonstrates the full iOS 17 feature surface: Symbol Effects, Sensory Feedback, Live Activities, interactive Swift Charts, presentation detents, and the <code>@Observable</code> macro.</em>
+  <em>AdPulse is an open-source iOS 17+ analytics dashboard for monitoring ad-creative performance — Meta Ads, ad spend, ROAS, conversions, anomalies. Built as a reference implementation of the modern iOS feature surface: <code>@Observable</code>, Symbol Effects, Sensory Feedback, Live Activities, interactive Swift Charts, presentation detents, SwiftData persistence, and Live Activity widgets.</em>
 </p>
 
 ---
 
-### `/// THE BRIEF`
+### `/// WHAT IT DOES`
 
-Build a native iOS dashboard for monitoring Meta Ads creative performance across products, creators, content types, and campaigns. The data: **1,200 rows** of mock campaign records spanning **5 months**, **7 products**, **10 creators**, **5 content types**, and **8 marketing angles**. The constraint: ship a polished, native-feeling iOS 17 app that shows you can use the platform, not just survive it.
+A native dashboard for a creative-economy brand to monitor ad performance across products, creators, content types, and campaigns. Mock data ships in the repo: **1,200 campaign records**, **5 months**, **7 products**, **10 creators**, **5 content types**, **8 marketing angles**. Swap the CSV for a real backend and you have a working production surface.
 
 ---
 
-### `/// iOS 17 SURFACE`
+### `/// FEATURES`
 
-Every screen is a deliberate showcase of an iOS 17 API.
-
-| Feature | Where it lives |
+| | |
 |---|---|
-| `Symbol Effects` (`.bounce`, `.pulse`, `.wiggle`) | KPI tiles on the Overview screen |
-| `.sensoryFeedback` (selection / impact / success) | Every selection, refresh, and primary action |
-| `.contentTransition(.numericText())` | KPI counters animate when filters change |
-| Interactive `Swift Charts` selection | ROAS-by-Month and Budget-by-Product charts |
-| Native search `.searchSuggestions` | Creatives list smart search |
-| `.presentationDetents` (adaptive sheets) | Filter sheets resize to their content |
-| `Live Activities` + Dynamic Island (`ActivityKit`) | Real-time campaign tracking |
-| `.regularMaterial` / `.ultraThinMaterial` | Card backgrounds, sheet chrome |
-| `@Observable` macro | All view models — no `@Published` boilerplate |
+| **Adaptive layout** | `NavigationSplitView` on iPad, `TabView` on iPhone — same code, two surfaces |
+| **iOS 17 `@Observable` ViewModel** | No `ObservableObject` / `@Published` boilerplate; computed `filteredCreatives` recomputes on filter mutation |
+| **Symbol Effects** | `.bounce`, `.pulse`, `.wiggle` on KPI tiles, status indicators, refresh controls |
+| **Sensory Feedback** | `.sensoryFeedback(.selection / .impact / .success)` on every meaningful interaction |
+| **Interactive Swift Charts** | ROAS-by-Month and Budget-by-Product with `chartXSelection` / `chartYSelection` |
+| **Live Activities + Dynamic Island** | `ActivityKit` driver + Widget Extension; the filtered cohort streams to the Lock Screen and the Dynamic Island |
+| **SwiftData persistence** | Favorites and search history survive restarts (`@Model` + `@Query`) |
+| **Anomaly detection** | Z-score on ROAS against the cohort mean — surfaces winners and losers in the Overview |
+| **Search suggestions** | iOS 17 `.searchable` with persisted recent-search completion |
+| **Presentation Detents** | Sheets resize to their content (`.presentationDetents([.medium, .large])`) |
+| **Accessibility** | Combined elements, VoiceOver labels + values on every card and chart, Reduce Motion respected |
+| **Settings** | Appearance picker (System / Light / Dark), sensory-feedback toggle, Live Activity control, anomaly threshold slider, data cleanup |
 
 ---
 
 ### `/// SCREENS`
 
-**Overview** — six headline KPIs with bounce animations · ROAS and Budget charts with interactive selection · Top 5 creatives by ROAS · Top 5 creators by conversions · pull-to-refresh with haptic feedback.
+**Overview** — six headline KPIs · ROAS / Budget charts with selection · Anomalies surfaced when threshold exceeded · Top 5 creatives by ROAS · Top 5 creators by conversions · pull-to-refresh + haptics · error banner when data load fails.
 
-**Creatives List** — smart search powered by iOS 17 suggestions · filter by Product / Month / Status / Type · sort by ROAS, Budget, or Conversions · context menus with preview · swipe actions for favorite and archive · adaptive presentation detents.
+**Creatives List** — smart search backed by SwiftData history · filter by Product / Month / Status / Type · sort six ways · context menus with preview · adaptive sheets for quick view.
 
-**Creative Detail** — eight selectable KPIs with sensory feedback · flow-layout tag stack · staggered entry animations · quick actions (edit · duplicate · share).
+**Creative Detail** — eight selectable KPIs with sensory feedback · flow-layout tag stack · star to favorite (persists) · quick actions in toolbar.
+
+**Settings** — appearance, haptics, Live Activity tracking, anomaly threshold, data cleanup, repo & portfolio links.
+
+**Onboarding** — three-step intro on first launch.
 
 ---
 
@@ -55,16 +61,20 @@ Every screen is a deliberate showcase of an iOS 17 API.
 
 ```
 MVVM Clean
-├── Models/             data + observable filter state
-├── ViewModels/         business logic + chart computation
+├── Models/             Creative, FilterState, FavoriteCreative (@Model), SearchHistoryItem (@Model)
+├── ViewModels/         DashboardViewModel — computed KPIs, filtered cohort, anomalies
 ├── Views/
-│   ├── Screens/        one file per top-level screen
-│   └── Components/     ~15 reusable UI pieces
-├── Services/           CSVParser, LiveActivityManager
-└── Theme/              design tokens, animation curves, modifiers
+│   ├── Screens/        OverviewView, CreativesListView, CreativeDetailView, SettingsView, OnboardingView
+│   └── Components/     KPICard, RankingRow, StatusBadge, CreativeRow, AnomalyRow, ErrorBanner, …
+├── Services/           CSVParser, LiveActivityManager, AnomalyDetector
+├── Shared/             CampaignActivityAttributes (cross-target — App + Widget)
+├── Widgets/            AdPulseWidgetBundle, CampaignLiveActivity (Widget Extension target)
+├── Tests/AdPulseTests/ CSVParser, DashboardViewModel, FilterState
+├── Theme/              brutalist palette + design tokens
+└── Resources/Assets.xcassets/  AppIcon.appiconset (1024×1024 universal)
 ```
 
-Reactive surface uses Combine + the `@Observable` macro (iOS 17). Dynamic Island state is owned by `LiveActivityManager`. All data flow goes through `DashboardViewModel`.
+Reactive surface is pure `@Observable` — every mutation re-renders dependents automatically. Live Activity state is owned by a singleton `LiveActivityManager`. The Widget Extension imports `Shared/CampaignActivityAttributes.swift` as a member of both targets.
 
 ---
 
@@ -76,13 +86,30 @@ cd adpulse-ios
 # Open the folder in Xcode 15+, target an iOS 17.0+ simulator or device.
 ```
 
-Mock data lives in `AdPulse-Data.csv` — 1,200 rows of campaign records for a fictional wellness brand (Vital). Column headers are in French (the original brief was for a French-speaking team); the data is parsed by `Services/CSVParser.swift`.
+Two extension targets need to be created in Xcode (one-time):
+
+- **Widget Extension** — see [`Widgets/SETUP.md`](Widgets/SETUP.md). Hosts `CampaignLiveActivity` and the Lock Screen view.
+- **Unit Test bundle** — see [`Tests/SETUP.md`](Tests/SETUP.md). Add the test files; run `⌘U`.
+
+Mock data lives in `AdPulse-Data.csv` — 1,200 rows for the fictional **Vital** wellness brand. Column headers are in French (the original brief was for a French-speaking team); the data is parsed by `Services/CSVParser.swift`. Swap the CSV (or replace the parser with a network fetch) to wire up a real backend.
+
+---
+
+### `/// CONTRIBUTING`
+
+Pull requests welcome. The code follows Swift API design guidelines, tabs four spaces wide, and prefers `@Observable` over `ObservableObject` everywhere. Run the tests before opening a PR (`⌘U`).
 
 ---
 
 ### `/// TECH`
 
-`SwiftUI` · `Swift Charts` · `ActivityKit` · `Observation` (`@Observable`) · `Combine` · `MVVM Clean`
+`SwiftUI` · `Swift Charts` · `SwiftData` · `ActivityKit` · `Observation` (`@Observable`) · `WidgetKit` · `MVVM Clean`
+
+---
+
+### `/// LICENSE`
+
+MIT — see [LICENSE](LICENSE). Use it, fork it, ship something with it.
 
 ---
 

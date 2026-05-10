@@ -19,7 +19,7 @@
   <text class="mono" x="640" y="24" text-anchor="middle" font-size="12" fill="#1A1A1A" letter-spacing="6">SWIFTUI · SWIFT CHARTS · ACTIVITYKIT · iOS 17 FEATURE SURFACE · MVVM CLEAN</text>
 
   <!-- Eyebrow -->
-  <text class="mono" x="60" y="100" font-size="13" fill="#1A1A1A" letter-spacing="6">PORTFOLIO / TAKE-HOME / iOS</text>
+  <text class="mono" x="60" y="100" font-size="13" fill="#1A1A1A" letter-spacing="6">OPEN SOURCE / iOS 17+ / 2026</text>
 
   <!-- Big name -->
   <text class="heading" x="60" y="240" font-size="150" fill="#1A1A1A" letter-spacing="-8">ADPULSE<tspan fill="#CCFF00">.</tspan></text>
@@ -29,9 +29,9 @@
 
   <!-- Acid corner -->
   <rect x="1080" y="80" width="140" height="140" fill="#CCFF00" stroke="#1A1A1A" stroke-width="6"/>
-  <text class="mono" x="1150" y="138" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">TAKE</text>
-  <text class="mono" x="1150" y="158" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">HOME</text>
-  <text class="mono" x="1150" y="178" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">BUILD</text>
+  <text class="mono" x="1150" y="138" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">OPEN</text>
+  <text class="mono" x="1150" y="158" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">SOURCE</text>
+  <text class="mono" x="1150" y="178" text-anchor="middle" font-size="13" fill="#1A1A1A" letter-spacing="2">MIT</text>
 
   <!-- Bottom mono line -->
   <text class="mono" x="60" y="378" font-size="12" fill="#1A1A1A" letter-spacing="4">/// 3 SCREENS · 1200 ROWS OF MOCK DATA · 15+ COMPONENTS · 9 iOS 17 FEATURES ///</text>
