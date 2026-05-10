@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(DashboardViewModel.self) private var viewModel
     @State private var selectedTab: Tab = .overview
     @State private var showSettings = false
-    @Environment(\.horizontalSizeClass) var sizeClass
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     enum Tab: String, CaseIterable {
@@ -28,12 +27,20 @@ struct ContentView: View {
     }
 
     var body: some View {
-        Group {
-            if sizeClass == .regular {
-                iPadLayout
-            } else {
-                iPhoneLayout
+        TabView(selection: $selectedTab) {
+            NavigationStack {
+                OverviewView()
+                    .adPulseSettingsToolbar(showSettings: $showSettings)
             }
+            .tabItem { Label(Tab.overview.rawValue, systemImage: Tab.overview.icon) }
+            .tag(Tab.overview)
+
+            NavigationStack {
+                CreativesListView()
+                    .adPulseSettingsToolbar(showSettings: $showSettings)
+            }
+            .tabItem { Label(Tab.creatives.rawValue, systemImage: Tab.creatives.icon) }
+            .tag(Tab.creatives)
         }
         .onAppear { viewModel.loadData() }
         .sheet(isPresented: $showSettings) {
@@ -44,46 +51,6 @@ struct ContentView: View {
             set: { hasCompletedOnboarding = !$0 }
         )) {
             OnboardingView()
-        }
-    }
-
-    // MARK: - iPad: Sidebar navigation
-    private var iPadLayout: some View {
-        NavigationSplitView {
-            List(Tab.allCases, id: \.self, selection: $selectedTab) { tab in
-                Label(tab.rawValue, systemImage: tab.icon)
-                    .tag(tab)
-            }
-            .navigationTitle("AdPulse")
-            .adPulseSettingsToolbar(showSettings: $showSettings)
-        } detail: {
-            switch selectedTab {
-            case .overview:  OverviewView()
-            case .creatives: CreativesListView()
-            }
-        }
-    }
-
-    // MARK: - iPhone: Tab bar navigation
-    private var iPhoneLayout: some View {
-        TabView(selection: $selectedTab) {
-            NavigationStack {
-                OverviewView()
-                    .adPulseSettingsToolbar(showSettings: $showSettings)
-            }
-            .tabItem {
-                Label(Tab.overview.rawValue, systemImage: Tab.overview.icon)
-            }
-            .tag(Tab.overview)
-
-            NavigationStack {
-                CreativesListView()
-                    .adPulseSettingsToolbar(showSettings: $showSettings)
-            }
-            .tabItem {
-                Label(Tab.creatives.rawValue, systemImage: Tab.creatives.icon)
-            }
-            .tag(Tab.creatives)
         }
     }
 }
