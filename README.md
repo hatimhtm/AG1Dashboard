@@ -6,6 +6,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/hatimhtm/adpulse-ios/actions/workflows/ios.yml"><img src="https://img.shields.io/github/actions/workflow/status/hatimhtm/adpulse-ios/ios.yml?branch=main&style=for-the-badge&label=CI&labelColor=1A1A1A&color=CCFF00" alt="CI" /></a>
   <img src="https://img.shields.io/badge/STATUS-OPEN_SOURCE-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Open source" />
   <img src="https://img.shields.io/badge/iOS-17%2B-1A1A1A?style=for-the-badge&logo=apple&logoColor=CCFF00" alt="iOS 17+" />
   <img src="https://img.shields.io/badge/SwiftUI-1A1A1A?style=for-the-badge&logo=swift&logoColor=CCFF00" alt="SwiftUI" />
