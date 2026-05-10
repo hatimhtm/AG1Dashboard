@@ -1,6 +1,6 @@
 //
 //  OverviewView.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Screen 1: Dashboard Overview with iOS 17 Features
 //  Showcases Swift Charts, animations, and modern UI patterns

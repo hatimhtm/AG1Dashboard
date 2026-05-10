@@ -1,6 +1,6 @@
 //
 //  FilterState.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Observable filter state for the dashboard
 //
@@ -11,8 +11,8 @@ import SwiftUI
 // MARK: - Product Filter Options
 enum ProductFilter: String, CaseIterable, Identifiable {
     case all = "Tous"
-    case ag1Powder = "AG1 Powder"
-    case ag1TravelPacks = "AG1 Travel Packs"
+    case vitalPowder = "Vital Powder"
+    case vitalTravelPacks = "Vital Travel Packs"
     case vitamineD3K2 = "Vitamine D3+K2"
     case omega3 = "Omega-3"
     case shaker = "Shaker"

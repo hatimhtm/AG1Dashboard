@@ -1,6 +1,6 @@
 //
 //  DashboardViewModel.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Main ViewModel handling data, filtering, and computed KPIs
 //
@@ -89,7 +89,7 @@ class DashboardViewModel: ObservableObject {
         
         Task {
             do {
-                let loaded = try CSVParser.parseCreatives(from: "AG1-Data")
+                let loaded = try CSVParser.parseCreatives(from: "AdPulse-Data")
                 self.creatives = loaded
                 self.applyFilters()
                 self.isLoading = false

@@ -1,8 +1,8 @@
 //
 //  CSVParser.swift
-//  AG1Dashboard
+//  AdPulse
 //
-//  Utility for parsing the AG1-Data.csv file
+//  Utility for parsing the AdPulse-Data.csv file
 //
 
 import Foundation

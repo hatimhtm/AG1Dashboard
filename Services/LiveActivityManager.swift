@@ -1,6 +1,6 @@
 //
 //  LiveActivityManager.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Live Activities Support for Dynamic Island (iOS 16.1+)
 //  Shows real-time campaign performance on lock screen and Dynamic Island
@@ -232,7 +232,7 @@ extension DashboardViewModel {
         guard !filteredCreatives.isEmpty else { return }
         
         LiveActivityManager.shared.startTracking(
-            campaignName: "AG1 Campaigns",
+            campaignName: "Vital Campaigns",
             productName: "\(creativeCount) créas actives",
             conversions: totalConversions,
             roas: averageROAS,

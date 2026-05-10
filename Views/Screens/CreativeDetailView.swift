@@ -1,6 +1,6 @@
 //
 //  CreativeDetailView.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Screen 3: Detailed View with iOS 17 Features
 //  Showcases advanced layouts, animations, and modern interactions

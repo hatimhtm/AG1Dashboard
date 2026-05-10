@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Main navigation container
 //  Adapts automatically: NavigationSplitView (iPad) or TabView (iPhone)
@@ -46,7 +46,7 @@ struct ContentView: View {
                 Label(tab.rawValue, systemImage: tab.icon)
                     .tag(tab)
             }
-            .navigationTitle("AG1 Dashboard")
+            .navigationTitle("AdPulse")
         } detail: {
             switch selectedTab {
             case .overview:

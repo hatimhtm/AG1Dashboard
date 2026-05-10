@@ -1,6 +1,6 @@
 //
 //  CreativesListView.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Screen 2: Searchable List with iOS 17 Features
 //  Showcases search suggestions, swipe actions, and modern list design
@@ -14,7 +14,7 @@ struct CreativesListView: View {
     @State private var selectedCreative: Creative?
     
     // iOS 17 search suggestions
-    @State private var recentSearches: [String] = ["UGC", "Podcast", "Emma", "AG1 Powder"]
+    @State private var recentSearches: [String] = ["UGC", "Podcast", "Emma", "Vital Powder"]
     
     var body: some View {
         VStack(spacing: 0) {

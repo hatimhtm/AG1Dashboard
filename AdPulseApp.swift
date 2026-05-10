@@ -1,15 +1,15 @@
 //
-//  AG1DashboardApp.swift
-//  AG1Dashboard
+//  AdPulseApp.swift
+//  AdPulse
 //
-//  Entry point for the AG1 Dashboard iOS app
+//  Entry point for the AdPulse iOS app
 //  A Meta Ads analytics dashboard for tracking creative performance
 //
 
 import SwiftUI
 
 @main
-struct AG1DashboardApp: App {
+struct AdPulseApp: App {
     
     // Main ViewModel shared across all views
     @StateObject private var viewModel = DashboardViewModel()

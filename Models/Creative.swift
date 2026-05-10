@@ -1,13 +1,13 @@
 //
 //  Creative.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Data model representing a single advertising creative from Meta Ads
 //
 
 import Foundation
 
-/// Represents one creative (ad) from the AG1-Data.csv file
+/// Represents one creative (ad) from the AdPulse-Data.csv file
 /// All properties match the CSV columns exactly
 struct Creative: Identifiable, Codable, Hashable {
     
@@ -115,8 +115,8 @@ extension Creative {
     
     /// Single sample creative for previews
     static let sample = Creative(
-        adName: "AG1_UGC_Emma_Energie_V1",
-        product: "AG1 Powder",
+        adName: "Vital_UGC_Emma_Energie_V1",
+        product: "Vital Powder",
         creator: "Emma Laurent",
         contentType: "UGC",
         marketingAngle: "Énergie quotidienne",
@@ -138,7 +138,7 @@ extension Creative {
     static let samples: [Creative] = [
         sample,
         Creative(
-            adName: "AG1_Podcast_Marc_Routine_V2",
+            adName: "Vital_Podcast_Marc_Routine_V2",
             product: "Bundle Complet",
             creator: "Marc Dupont",
             contentType: "Podcast",
@@ -157,8 +157,8 @@ extension Creative {
             clickRate: 3.0
         ),
         Creative(
-            adName: "AG1_Static_Travel_V1",
-            product: "AG1 Travel Packs",
+            adName: "Vital_Static_Travel_V1",
+            product: "Vital Travel Packs",
             creator: "Studio Interne",
             contentType: "Image statique",
             marketingAngle: "Voyage et santé",
@@ -176,8 +176,8 @@ extension Creative {
             clickRate: 2.0
         ),
         Creative(
-            adName: "AG1_Video_Sophie_Wellness_V1",
-            product: "AG1 Powder",
+            adName: "Vital_Video_Sophie_Wellness_V1",
+            product: "Vital Powder",
             creator: "Sophie Martin",
             contentType: "Motion/Vidéo",
             marketingAngle: "Bien-être global",
@@ -195,7 +195,7 @@ extension Creative {
             clickRate: 3.5
         ),
         Creative(
-            adName: "AG1_UGC_Thomas_Sport_V3",
+            adName: "Vital_UGC_Thomas_Sport_V3",
             product: "Bundle Complet",
             creator: "Thomas Bernard",
             contentType: "UGC",

@@ -1,159 +1,98 @@
-# AG1 Dashboard - iOS App 📊
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-banner-dark.svg" />
+    <img src="assets/hero-banner.svg" alt="AdPulse — Creative Analytics for iOS" width="100%" />
+  </picture>
+</p>
 
-> Modern SwiftUI application for Meta Ads performance analytics.
-> **iOS 17+ | Swift 5.9 | SwiftUI Charts**
+<p align="center">
+  <img src="https://img.shields.io/badge/STATUS-TAKE_HOME_BUILD-CCFF00?style=for-the-badge&labelColor=1A1A1A" alt="Take-home build" />
+  <img src="https://img.shields.io/badge/iOS-17%2B-1A1A1A?style=for-the-badge&logo=apple&logoColor=CCFF00" alt="iOS 17+" />
+  <img src="https://img.shields.io/badge/SwiftUI-1A1A1A?style=for-the-badge&logo=swift&logoColor=CCFF00" alt="SwiftUI" />
+</p>
 
-## ✨ iOS 17+ Features
-
-| Feature | Description |
-|---------|-------------|
-| 🎯 Symbol Effects | `.bounce`, `.pulse`, `.wiggle` animations |
-| 📳 Sensory Feedback | Contextual haptics (selection, impact, notification) |
-| 🔢 Content Transitions | `.numericText()` for animated KPIs |
-| 📊 Chart Selection | Interactive chart selection |
-| 🔍 Search Suggestions | Native search suggestions |
-| 📱 Dynamic Island | Live Activities support for real-time tracking |
-| 🎨 Material Backgrounds | `.regularMaterial` blur effects |
-
-## 📱 Screens
-
-### 1. Overview (Dashboard)
-- 6 KPIs with `.bounce` animations
-- ROAS/Month charts with interactive selection
-- Budget/Product charts
-- Top 5 creatives by ROAS
-- Top 5 creators by conversions
-- Pull-to-refresh with haptics
-
-### 2. Creatives List
-- Smart search with iOS 17 suggestions
-- Filters: Product, Month, Status, Type
-- Sort: ROAS ↑↓, Budget ↑↓, Conversions ↑↓
-- Context menus with preview
-- Swipe actions (favorite, archive)
-- Presentation detents (adaptive sheet)
-
-### 3. Creative Detail
-- 8 selectable KPIs with feedback
-- Flow layout for tags
-- Staggered entry animations
-- Quick actions (edit, duplicate, share)
-
-## 🗂 Project Structure
-
-```
-AG1Dashboard/
-├── AG1DashboardApp.swift          # Entry point
-├── AG1-Data.csv                   # 1200 rows of mock data
-├── Theme/
-│   └── Theme.swift                # Complete design system
-├── Models/
-│   ├── Creative.swift             # Data model
-│   └── FilterState.swift          # Observable filter state
-├── ViewModels/
-│   └── DashboardViewModel.swift   # Business logic + charts
-├── Services/
-│   ├── CSVParser.swift            # CSV parsing
-│   └── LiveActivityManager.swift  # Dynamic Island support
-└── Views/
-    ├── ContentView.swift          # Adaptive navigation
-    ├── Components/
-    │   └── Components.swift       # 15+ reusable components
-    └── Screens/
-        ├── OverviewView.swift     # Dashboard with charts
-        ├── CreativesListView.swift # Filterable list
-        └── CreativeDetailView.swift # Detail view
-```
-
-## 🎨 Design System
-
-```swift
-// Colors
-AppTheme.Colors.primary          // AG1 Green
-AppTheme.Colors.background       // Light gradient
-AppTheme.Colors.accentBlue/Purple/Cyan...
-
-// Animations
-AppTheme.Animations.smooth       // 0.3s easeInOut
-AppTheme.Animations.bouncy       // Spring with bounce
-AppTheme.Animations.snappy       // Quick response
-
-// Styles
-.cardStyle()                     // Cards with shadow
-.gradientBackground()            // Gradient background
-```
-
-## 📊 Mock Data
-
-The `AG1-Data.csv` file contains 1200 entries with:
-- 7 products (AG1 Powder, Travel Packs, Vitamins...)
-- 10 different creators
-- 5 content types (UGC, Podcast, Video, Image, Testimonial)
-- 8 marketing angles
-- 5 months (July - November 2025)
-- Various metrics (budget, conversions, ROAS, impressions...)
-
-## 🚀 Installation
-
-```bash
-# 1. Clone the project
-git clone https://github.com/hatimhtm/AG1Dashboard.git
-
-# 2. Open in Xcode 15+
-open AG1Dashboard.xcodeproj
-
-# 3. Build & Run
-# Target: iOS 17.0+ Simulator or Device
-```
-
-## 📦 Technologies
-
-- **SwiftUI** - Declarative UI framework
-- **Swift Charts** - Native charting
-- **Combine** - Reactive programming
-- **ActivityKit** - Live Activities
-- **Observation** - @Observable macro (iOS 17)
-
-## 🏗 Architecture
-
-```
-MVVM Clean Architecture
-├── Models (Data layer)
-├── ViewModels (Business logic)
-├── Views (Presentation layer)
-│   ├── Screens (Pages)
-│   └── Components (Reusable)
-└── Services (External interfaces)
-```
-
-## 📝 CSV Columns
-
-| Column | Description |
-|--------|-------------|
-| Ad Name | Creative identifier |
-| Product | Product category |
-| Creator | Creator name |
-| Content Type | UGC/Podcast/Video... |
-| Marketing Angle | Primary hook |
-| Month | Broadcast period |
-| Status | Live/Stopped/Paused/Archived |
-| Budget Spent (€) | Amount invested |
-| Conversions | Number of purchases |
-| ROAS | Return on Ad Spend |
-| Impressions | Number of views |
-| Clicks | Interactions |
-| Click Rate (%) | CTR |
-
-## 📄 License
-
-MIT
+<p align="center">
+  <em>Creative analytics dashboard for iOS — built as a take-home for an iOS engineer interview. Demonstrates the full iOS 17 feature surface: Symbol Effects, Sensory Feedback, Live Activities, interactive Swift Charts, presentation detents, and the <code>@Observable</code> macro.</em>
+</p>
 
 ---
 
-### 👤 Author
+### `/// THE BRIEF`
 
-**Hatim El Hassak** — Full-Stack Engineer
+Build a native iOS dashboard for monitoring Meta Ads creative performance across products, creators, content types, and campaigns. The data: **1,200 rows** of mock campaign records spanning **5 months**, **7 products**, **10 creators**, **5 content types**, and **8 marketing angles**. The constraint: ship a polished, native-feeling iOS 17 app that shows you can use the platform, not just survive it.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=CDFF00)](https://hatimelhassak.is-a.dev)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hatim-elhassak/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hatimelhassak.official@gmail.com)
+---
+
+### `/// iOS 17 SURFACE`
+
+Every screen is a deliberate showcase of an iOS 17 API.
+
+| Feature | Where it lives |
+|---|---|
+| `Symbol Effects` (`.bounce`, `.pulse`, `.wiggle`) | KPI tiles on the Overview screen |
+| `.sensoryFeedback` (selection / impact / success) | Every selection, refresh, and primary action |
+| `.contentTransition(.numericText())` | KPI counters animate when filters change |
+| Interactive `Swift Charts` selection | ROAS-by-Month and Budget-by-Product charts |
+| Native search `.searchSuggestions` | Creatives list smart search |
+| `.presentationDetents` (adaptive sheets) | Filter sheets resize to their content |
+| `Live Activities` + Dynamic Island (`ActivityKit`) | Real-time campaign tracking |
+| `.regularMaterial` / `.ultraThinMaterial` | Card backgrounds, sheet chrome |
+| `@Observable` macro | All view models — no `@Published` boilerplate |
+
+---
+
+### `/// SCREENS`
+
+**Overview** — six headline KPIs with bounce animations · ROAS and Budget charts with interactive selection · Top 5 creatives by ROAS · Top 5 creators by conversions · pull-to-refresh with haptic feedback.
+
+**Creatives List** — smart search powered by iOS 17 suggestions · filter by Product / Month / Status / Type · sort by ROAS, Budget, or Conversions · context menus with preview · swipe actions for favorite and archive · adaptive presentation detents.
+
+**Creative Detail** — eight selectable KPIs with sensory feedback · flow-layout tag stack · staggered entry animations · quick actions (edit · duplicate · share).
+
+---
+
+### `/// ARCHITECTURE`
+
+```
+MVVM Clean
+├── Models/             data + observable filter state
+├── ViewModels/         business logic + chart computation
+├── Views/
+│   ├── Screens/        one file per top-level screen
+│   └── Components/     ~15 reusable UI pieces
+├── Services/           CSVParser, LiveActivityManager
+└── Theme/              design tokens, animation curves, modifiers
+```
+
+Reactive surface uses Combine + the `@Observable` macro (iOS 17). Dynamic Island state is owned by `LiveActivityManager`. All data flow goes through `DashboardViewModel`.
+
+---
+
+### `/// SETUP`
+
+```bash
+git clone https://github.com/hatimhtm/adpulse-ios.git
+cd adpulse-ios
+# Open the folder in Xcode 15+, target an iOS 17.0+ simulator or device.
+```
+
+Mock data lives in `AdPulse-Data.csv` — 1,200 rows of campaign records for a fictional wellness brand (Vital). Column headers are in French (the original brief was for a French-speaking team); the data is parsed by `Services/CSVParser.swift`.
+
+---
+
+### `/// TECH`
+
+`SwiftUI` · `Swift Charts` · `ActivityKit` · `Observation` (`@Observable`) · `Combine` · `MVVM Clean`
+
+---
+
+<p align="center">
+  <a href="https://hatimelhassak.is-a.dev"><img src="https://img.shields.io/badge/PORTFOLIO-1A1A1A?style=for-the-badge&logo=vercel&logoColor=CCFF00" alt="Portfolio" /></a>
+  <a href="https://cal.com/hatimelhassak/engineering-discovery"><img src="https://img.shields.io/badge/BOOK_A_CALL-CCFF00?style=for-the-badge&logo=googlecalendar&logoColor=1A1A1A" alt="Book a call" /></a>
+  <a href="https://www.linkedin.com/in/hatim-elhassak/"><img src="https://img.shields.io/badge/LINKEDIN-1A1A1A?style=for-the-badge&logo=linkedin&logoColor=CCFF00" alt="LinkedIn" /></a>
+  <a href="mailto:hatimelhassak.official@gmail.com"><img src="https://img.shields.io/badge/EMAIL-1A1A1A?style=for-the-badge&logo=gmail&logoColor=CCFF00" alt="Email" /></a>
+</p>
+
+<p align="center">
+  <code>///&nbsp;&nbsp;OPEN FOR NEW WORK&nbsp;&nbsp;///&nbsp;&nbsp;CONTRACT &amp; FREELANCE&nbsp;&nbsp;///&nbsp;&nbsp;REMOTE WORLDWIDE&nbsp;&nbsp;///</code>
+</p>

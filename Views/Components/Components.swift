@@ -1,6 +1,6 @@
 //
 //  Components.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Reusable UI Components with iOS 17 Features
 //  Includes animations, haptics, and modern interactions

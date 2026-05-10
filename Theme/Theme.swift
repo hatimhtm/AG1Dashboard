@@ -1,6 +1,6 @@
 //
 //  Theme.swift
-//  AG1Dashboard
+//  AdPulse
 //
 //  Design System with iOS 17+ Features
 //  Uses latest SwiftUI APIs for modern, polished UI
