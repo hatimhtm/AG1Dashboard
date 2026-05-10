@@ -28,20 +28,33 @@ struct OverviewView: View {
     }
     
     var body: some View {
+        @Bindable var viewModel = viewModel
+
         ScrollView {
             VStack(spacing: 24) {
+                if let error = viewModel.errorMessage {
+                    ErrorBanner(message: error) {
+                        viewModel.errorMessage = nil
+                    }
+                }
+
                 // Filters
                 filterSection
-                
+
                 // Summary header
                 summaryHeader
-                
+
                 // KPIs
                 kpiSection
-                
+
                 // Charts with iOS 17 selection
                 chartsSection
-                
+
+                // Anomalies (if any)
+                if !viewModel.anomalies.isEmpty {
+                    anomaliesSection
+                }
+
                 // Rankings
                 rankingsSection
             }
@@ -340,6 +353,43 @@ struct OverviewView: View {
             .map { "\($0.product): €\(Int($0.budget))" }
             .joined(separator: ", ")
         return entries.isEmpty ? "No data" : entries
+    }
+
+    // MARK: - Anomalies Section
+    private var anomaliesSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Anomalies détectées")
+                    .font(.headline)
+                    .foregroundStyle(AppTheme.Colors.textPrimary)
+
+                Spacer()
+
+                Text("\(viewModel.anomalies.count)")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(AppTheme.Colors.statusStopped)
+                    .clipShape(Capsule())
+                    .accessibilityHidden(true)
+
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .foregroundStyle(AppTheme.Colors.statusStopped)
+                    .symbolEffect(.pulse)
+                    .accessibilityHidden(true)
+            }
+
+            ForEach(Array(viewModel.anomalies.prefix(3).enumerated()), id: \.offset) { index, anomaly in
+                AnomalyRow(anomaly: anomaly)
+
+                if index < min(viewModel.anomalies.count, 3) - 1 {
+                    Divider()
+                }
+            }
+        }
+        .cardStyle()
     }
 
     // MARK: - Rankings Section

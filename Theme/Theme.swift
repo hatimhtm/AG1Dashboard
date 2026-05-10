@@ -11,39 +11,46 @@ import SwiftUI
 // MARK: - App Theme
 struct AppTheme {
     
-    // MARK: - Colors
+    // MARK: - Colors (brutalist palette — see ../CLAUDE.md for the brand spec)
     struct Colors {
-        // Primary gradient (soft green-blue)
-        static let gradientStart = Color(red: 0.93, green: 0.98, blue: 0.95)
-        static let gradientEnd = Color(red: 0.90, green: 0.95, blue: 0.98)
-        
-        // Card background with slight transparency for iOS 17 materials
-        static let cardBackground = Color.white
-        static let cardShadow = Color.black.opacity(0.08)
-        
+        // Primary brutalist tokens
+        static let ink      = Color(red: 0.10, green: 0.10, blue: 0.10)   // #1A1A1A
+        static let cream    = Color(red: 1.00, green: 0.99, blue: 0.96)   // #FFFDF5
+        static let acid     = Color(red: 0.80, green: 1.00, blue: 0.00)   // #CCFF00
+        static let electric = Color(red: 0.00, green: 0.33, blue: 1.00)   // #0055FF
+        static let hotpink  = Color(red: 1.00, green: 0.20, blue: 0.60)   // #FF3399
+        static let vivid    = Color(red: 1.00, green: 0.40, blue: 0.00)   // #FF6600
+
+        // Background — flat cream, gradient endpoints both cream-toned
+        static let gradientStart = cream
+        static let gradientEnd   = Color(red: 0.95, green: 0.94, blue: 0.91)
+        static let cardBackground = cream
+        static let cardShadow    = Color.black.opacity(0.10)
+
         // Text
-        static let textPrimary = Color(red: 0.1, green: 0.1, blue: 0.15)
-        static let textSecondary = Color(red: 0.55, green: 0.55, blue: 0.6)
-        
-        // Accent colors
-        static let accentGreen = Color(red: 0.4, green: 0.78, blue: 0.55)
-        static let accentBlue = Color(red: 0.35, green: 0.55, blue: 0.9)
-        static let accentYellow = Color(red: 0.95, green: 0.75, blue: 0.3)
-        static let accentOrange = Color(red: 0.95, green: 0.55, blue: 0.35)
-        static let accentPurple = Color(red: 0.65, green: 0.45, blue: 0.85)
-        static let accentCyan = Color(red: 0.3, green: 0.75, blue: 0.85)
-        static let accentPink = Color(red: 0.95, green: 0.45, blue: 0.55)
-        static let accentMint = Color(red: 0.35, green: 0.85, blue: 0.75)
-        
+        static let textPrimary   = ink
+        static let textSecondary = ink.opacity(0.6)
+
+        // Semantic accents — repointed to brutalist palette so the dashboard reads
+        // as one coherent visual system. Names preserved so the views compile.
+        static let accentGreen  = Color(red: 0.30, green: 0.75, blue: 0.40) // status / "good"
+        static let accentBlue   = electric
+        static let accentYellow = acid
+        static let accentOrange = vivid
+        static let accentPurple = Color(red: 0.55, green: 0.36, blue: 0.96)
+        static let accentCyan   = Color(red: 0.02, green: 0.71, blue: 0.83)
+        static let accentPink   = hotpink
+        static let accentMint   = Color(red: 0.20, green: 0.75, blue: 0.65)
+
         // Status
-        static let statusOnline = Color(red: 0.4, green: 0.78, blue: 0.55)
-        static let statusStopped = Color(red: 0.9, green: 0.4, blue: 0.4)
-        static let statusPaused = Color(red: 0.95, green: 0.75, blue: 0.3)
-        static let statusArchived = Color(red: 0.6, green: 0.6, blue: 0.65)
-        
-        // Chart gradient colors
-        static let chartGradientGreen = [accentMint, accentGreen]
-        static let chartGradientBlue = [accentCyan, accentBlue]
+        static let statusOnline   = accentGreen
+        static let statusStopped  = Color(red: 0.95, green: 0.30, blue: 0.30)
+        static let statusPaused   = vivid
+        static let statusArchived = ink.opacity(0.4)
+
+        // Chart gradient pairs
+        static let chartGradientGreen  = [accentMint, accentGreen]
+        static let chartGradientBlue   = [accentCyan, accentBlue]
         static let chartGradientPurple = [accentPink, accentPurple]
     }
     

@@ -119,6 +119,18 @@ final class DashboardViewModel {
             .map { $0 }
     }
 
+    // MARK: - Anomalies
+    /// Top anomalies for the currently-filtered cohort. Reads the user's
+    /// preference + threshold straight from UserDefaults so the SettingsView
+    /// AppStorage values flow through without any extra plumbing.
+    var anomalies: [AnomalyDetector.Anomaly] {
+        let defaults = UserDefaults.standard
+        let enabled = defaults.object(forKey: "anomalyDetectionEnabled") as? Bool ?? true
+        guard enabled else { return [] }
+        let threshold = defaults.object(forKey: "anomalyZScoreThreshold") as? Double ?? 2.0
+        return AnomalyDetector.detect(in: filteredCreatives, zThreshold: threshold)
+    }
+
     // MARK: - Data Loading
     func loadData() {
         isLoading = true

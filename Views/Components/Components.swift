@@ -350,12 +350,99 @@ struct LoadingView: View {
         VStack(spacing: 16) {
             ProgressView()
                 .controlSize(.large)
-            
+
             Text("Chargement...")
                 .font(.subheadline)
                 .foregroundStyle(AppTheme.Colors.textSecondary)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+}
+
+// MARK: - Error Banner
+struct ErrorBanner: View {
+    let message: String
+    var onDismiss: (() -> Void)? = nil
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .font(.title3)
+                .foregroundStyle(AppTheme.Colors.statusStopped)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Erreur")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(AppTheme.Colors.textPrimary)
+                Text(message)
+                    .font(.caption)
+                    .foregroundStyle(AppTheme.Colors.textSecondary)
+                    .lineLimit(3)
+            }
+
+            Spacer()
+
+            if let onDismiss {
+                Button(action: onDismiss) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(AppTheme.Colors.textSecondary)
+                }
+                .accessibilityLabel("Fermer la bannière d'erreur")
+            }
+        }
+        .padding()
+        .background(AppTheme.Colors.statusStopped.opacity(0.1))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(AppTheme.Colors.statusStopped.opacity(0.3), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Erreur")
+        .accessibilityValue(message)
+    }
+}
+
+// MARK: - Anomaly Row
+struct AnomalyRow: View {
+    let anomaly: AnomalyDetector.Anomaly
+
+    private var directionIcon: String {
+        anomaly.direction == .above ? "arrow.up.right.circle.fill" : "arrow.down.right.circle.fill"
+    }
+
+    private var directionColor: Color {
+        anomaly.direction == .above ? AppTheme.Colors.accentGreen : AppTheme.Colors.statusStopped
+    }
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: directionIcon)
+                .font(.title3)
+                .foregroundStyle(directionColor)
+                .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(anomaly.creative.adName)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(AppTheme.Colors.textPrimary)
+                    .lineLimit(1)
+                Text("ROAS \(String(format: "%.2f", anomaly.creative.roas))  ·  \(String(format: "%.1fσ", anomaly.zScore))")
+                    .font(.caption)
+                    .foregroundStyle(AppTheme.Colors.textSecondary)
+            }
+
+            Spacer()
+
+            StatusBadge(status: anomaly.creative.status)
+        }
+        .padding(.vertical, 6)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Anomaly: \(anomaly.creative.adName)")
+        .accessibilityValue("ROAS \(String(format: "%.2f", anomaly.creative.roas)), \(String(format: "%.1f", anomaly.zScore)) sigma \(anomaly.direction == .above ? "above" : "below") cohort mean")
     }
 }
 

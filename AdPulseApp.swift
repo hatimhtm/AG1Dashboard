@@ -14,10 +14,14 @@ struct AdPulseApp: App {
     // Main ViewModel shared across all views (iOS 17 @Observable + .environment)
     @State private var viewModel = DashboardViewModel()
 
+    // User-controlled appearance override from SettingsView.
+    @AppStorage("appearancePreference") private var appearancePreference: AppearancePreference = .system
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(viewModel)
+                .preferredColorScheme(appearancePreference.colorScheme)
         }
         // SwiftData container — favorites + search history persist across launches.
         .modelContainer(for: [FavoriteCreative.self, SearchHistoryItem.self])
