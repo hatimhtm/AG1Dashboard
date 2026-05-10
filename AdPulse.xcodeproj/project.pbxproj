@@ -66,13 +66,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AdPulseWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AdPulseWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		21A1914E0999B8CD9DF00FE6 /* Creative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creative.swift; sourceTree = "<group>"; };
 		22A1B3FED6AE0C9F4B3BEB52 /* AdPulseWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPulseWidgetBundle.swift; sourceTree = "<group>"; };
 		307B1B1FA978174AFC0B202C /* CSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
 		3129476BA0D13ACAF8306FB3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
-		3157598C8DE4C68490DF26D7 /* AdPulseTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AdPulseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F988EF17AD904A23084FA48 /* AdPulse.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AdPulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3157598C8DE4C68490DF26D7 /* AdPulseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdPulseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F988EF17AD904A23084FA48 /* AdPulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdPulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6980A6E9FA359FEFCE7FD002 /* CSVParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParserTests.swift; sourceTree = "<group>"; };
 		6B4A56C1206AF8CEB1378D43 /* CreativesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativesListView.swift; sourceTree = "<group>"; };
 		77219860D9B5C1BDFDFEA421 /* SearchHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItem.swift; sourceTree = "<group>"; };
@@ -292,15 +292,12 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					0210D907DAD87FDB3576C668 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					6F79A9544D28A6EF989E95AC = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					8695D96982C516B32931864C = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -392,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,6 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AdPulse;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
@@ -560,6 +559,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AdPulse;
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
@@ -580,6 +580,7 @@
 		9EC82B3CBC933762AFFCF7CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AdPulseWidgets;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -598,6 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +615,7 @@
 		F9BAAA9C1BCA20DF44484A1D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = ULHJAB7ZT3;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AdPulseWidgets;
 				LD_RUNPATH_SEARCH_PATHS = (

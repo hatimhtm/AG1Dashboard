@@ -120,7 +120,7 @@ private struct OnboardingPageView: View {
                 Image(systemName: page.symbol)
                     .font(.system(size: 80, weight: .bold))
                     .foregroundStyle(AppTheme.Colors.ink)
-                    .symbolEffect(.bounce, options: .repeat(.continuous))
+                    .symbolEffect(.bounce, options: .repeating)
             }
 
             VStack(spacing: 12) {
