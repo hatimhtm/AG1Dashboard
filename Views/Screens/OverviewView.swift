@@ -12,7 +12,8 @@ import Charts
 struct OverviewView: View {
     @Environment(DashboardViewModel.self) private var viewModel
     @Environment(\.horizontalSizeClass) var sizeClass
-    
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     @State private var selectedMonth: String?
     @State private var selectedProduct: String?
     @State private var animateCharts = false
@@ -55,6 +56,7 @@ struct OverviewView: View {
             viewModel.loadData()
         }
         .onAppear {
+            guard !reduceMotion else { animateCharts = true; return }
             withAnimation(AppTheme.Animations.smooth.delay(0.3)) {
                 animateCharts = true
             }
@@ -266,10 +268,19 @@ struct OverviewView: View {
             .chartXSelection(value: $selectedMonth)
             .frame(height: 180)
             .sensoryFeedback(.selection, trigger: selectedMonth)
+            .accessibilityLabel("ROAS by month chart")
+            .accessibilityValue(roasChartAccessibilitySummary)
         }
         .cardStyle()
     }
-    
+
+    private var roasChartAccessibilitySummary: String {
+        let entries = viewModel.roasByMonth
+            .map { "\($0.month): \(String(format: "%.2f", $0.roas))" }
+            .joined(separator: ", ")
+        return entries.isEmpty ? "No data" : entries
+    }
+
     private var budgetChart: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
@@ -318,10 +329,19 @@ struct OverviewView: View {
             .chartYSelection(value: $selectedProduct)
             .frame(height: 180)
             .sensoryFeedback(.selection, trigger: selectedProduct)
+            .accessibilityLabel("Budget by product chart")
+            .accessibilityValue(budgetChartAccessibilitySummary)
         }
         .cardStyle()
     }
-    
+
+    private var budgetChartAccessibilitySummary: String {
+        let entries = viewModel.budgetByProduct.prefix(5)
+            .map { "\($0.product): €\(Int($0.budget))" }
+            .joined(separator: ", ")
+        return entries.isEmpty ? "No data" : entries
+    }
+
     // MARK: - Rankings Section
     private var rankingsSection: some View {
         VStack(spacing: 16) {

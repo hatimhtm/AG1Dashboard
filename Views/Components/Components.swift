@@ -15,13 +15,13 @@ struct KPICard: View {
     let value: String
     let color: Color
     var trend: Double? = nil  // Optional trend indicator
-    
+
     @State private var isAppeared = false
-    
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                // Animated icon
                 Image(systemName: icon)
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -30,20 +30,20 @@ struct KPICard: View {
                     .background(color.opacity(0.15))
                     .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     .symbolEffect(.bounce, value: isAppeared)
-                
+                    .accessibilityHidden(true)
+
                 Spacer()
-                
-                // Trend indicator (if provided)
+
                 if let trend = trend {
                     TrendBadge(value: trend)
                 }
             }
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.caption)
                     .foregroundStyle(AppTheme.Colors.textSecondary)
-                
+
                 Text(value)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -54,10 +54,22 @@ struct KPICard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .cardStyle()
         .onAppear {
+            guard !reduceMotion else { isAppeared = true; return }
             withAnimation(AppTheme.Animations.bouncy.delay(0.2)) {
                 isAppeared = true
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(title)
+        .accessibilityValue(accessibilityValue)
+    }
+
+    private var accessibilityValue: String {
+        if let trend {
+            let direction = trend >= 0 ? "up" : "down"
+            return "\(value), trend \(String(format: "%.1f", abs(trend)))% \(direction)"
+        }
+        return value
     }
 }
 
@@ -189,28 +201,29 @@ struct RankingRow: View {
 // MARK: - Status Badge (with pulse animation for online)
 struct StatusBadge: View {
     let status: String
-    
+
     private var color: Color { status.statusColor }
     private var isOnline: Bool { status.lowercased() == "en ligne" }
-    
+
     @State private var isPulsing = false
-    
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
     var body: some View {
         HStack(spacing: 6) {
             ZStack {
-                if isOnline {
+                if isOnline && !reduceMotion {
                     Circle()
                         .fill(color.opacity(0.4))
                         .frame(width: 12, height: 12)
                         .scaleEffect(isPulsing ? 1.5 : 1.0)
                         .opacity(isPulsing ? 0 : 1)
                 }
-                
                 Circle()
                     .fill(color)
                     .frame(width: 8, height: 8)
             }
-            
+            .accessibilityHidden(true)
+
             Text(status)
                 .font(.caption)
                 .fontWeight(.medium)
@@ -220,49 +233,47 @@ struct StatusBadge: View {
         .background(color.opacity(0.15))
         .clipShape(Capsule())
         .onAppear {
-            if isOnline {
-                withAnimation(.easeOut(duration: 1.5).repeatForever(autoreverses: false)) {
-                    isPulsing = true
-                }
+            guard isOnline, !reduceMotion else { return }
+            withAnimation(.easeOut(duration: 1.5).repeatForever(autoreverses: false)) {
+                isPulsing = true
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Status: \(status)")
     }
 }
 
 // MARK: - Creative Row (with press effect)
 struct CreativeRow: View {
     let creative: Creative
-    
+
     @State private var isPressed = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // Header
             HStack {
                 Text(creative.adName)
                     .font(.headline)
                     .foregroundStyle(AppTheme.Colors.textPrimary)
                     .lineLimit(1)
-                
+
                 Spacer()
-                
+
                 StatusBadge(status: creative.status)
             }
-            
-            // Metadata
+
             HStack(spacing: 16) {
                 Label(creative.product, systemImage: "tag.fill")
                     .font(.caption)
                     .foregroundStyle(AppTheme.Colors.textSecondary)
-                
+
                 Label(creative.creator, systemImage: "person.fill")
                     .font(.caption)
                     .foregroundStyle(AppTheme.Colors.textSecondary)
             }
-            
+
             Divider()
-            
-            // KPIs
+
             HStack(spacing: 0) {
                 MiniKPI(label: "Budget", value: creative.budgetFormatted)
                 MiniKPI(label: "Conv.", value: "\(creative.conversions)")
@@ -279,6 +290,10 @@ struct CreativeRow: View {
                 HapticsManager.impact(.light)
             }
         }, perform: {})
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(creative.adName), \(creative.product), by \(creative.creator)")
+        .accessibilityValue("ROAS \(String(format: "%.2f", creative.roas)), \(creative.conversions) conversions, \(creative.budgetFormatted) budget. Status: \(creative.status).")
+        .accessibilityHint("Tap to view full details")
     }
 }
 

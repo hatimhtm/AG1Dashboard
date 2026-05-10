@@ -2,29 +2,16 @@
 //  LiveActivityManager.swift
 //  AdPulse
 //
-//  Live Activities Support for Dynamic Island (iOS 16.1+)
-//  Shows real-time campaign performance on lock screen and Dynamic Island
+//  ActivityKit driver — starts / updates / ends a campaign Live Activity. The
+//  attributes type lives in `Shared/CampaignActivityAttributes.swift` so the
+//  Widget Extension target can compile against the same definition.
 //
 
-import Foundation
 import ActivityKit
-import SwiftUI
+import Foundation
+import OSLog
 
-// MARK: - Live Activity Attributes
-struct CampaignActivityAttributes: ActivityAttributes {
-    
-    // Static content that doesn't change
-    public struct ContentState: Codable, Hashable {
-        var totalConversions: Int
-        var currentROAS: Double
-        var budgetSpent: Double
-        var lastUpdated: Date
-    }
-    
-    // Fixed data
-    var campaignName: String
-    var productName: String
-}
+private let logger = Logger(subsystem: "com.hatim.adpulse", category: "LiveActivity")
 
 // MARK: - Live Activity Manager
 @MainActor
@@ -35,19 +22,19 @@ final class LiveActivityManager {
 
     var currentActivity: Activity<CampaignActivityAttributes>?
     var isLiveActivitySupported: Bool = false
-    
+
     private init() {
-        checkSupport()
+        refreshSupport()
     }
-    
-    // MARK: - Check Support
-    private func checkSupport() {
+
+    // MARK: - Support detection
+    private func refreshSupport() {
         if #available(iOS 16.1, *) {
             isLiveActivitySupported = ActivityAuthorizationInfo().areActivitiesEnabled
         }
     }
-    
-    // MARK: - Start Live Activity
+
+    // MARK: - Start
     func startTracking(
         campaignName: String,
         productName: String,
@@ -56,23 +43,22 @@ final class LiveActivityManager {
         budget: Double
     ) {
         guard isLiveActivitySupported else { return }
-        
-        // End any existing activity
+
         Task {
             await endCurrentActivity()
-            
+
             let attributes = CampaignActivityAttributes(
                 campaignName: campaignName,
                 productName: productName
             )
-            
+
             let state = CampaignActivityAttributes.ContentState(
                 totalConversions: conversions,
                 currentROAS: roas,
                 budgetSpent: budget,
                 lastUpdated: Date()
             )
-            
+
             do {
                 let activity = try Activity.request(
                     attributes: attributes,
@@ -81,19 +67,15 @@ final class LiveActivityManager {
                 )
                 currentActivity = activity
             } catch {
-                print("Failed to start Live Activity: \(error)")
+                logger.error("Failed to start Live Activity: \(error.localizedDescription, privacy: .public)")
             }
         }
     }
-    
-    // MARK: - Update Live Activity
-    func updateActivity(
-        conversions: Int,
-        roas: Double,
-        budget: Double
-    ) {
+
+    // MARK: - Update
+    func updateActivity(conversions: Int, roas: Double, budget: Double) {
         guard let activity = currentActivity else { return }
-        
+
         Task {
             let state = CampaignActivityAttributes.ContentState(
                 totalConversions: conversions,
@@ -101,17 +83,13 @@ final class LiveActivityManager {
                 budgetSpent: budget,
                 lastUpdated: Date()
             )
-            
-            await activity.update(
-                ActivityContent(state: state, staleDate: nil)
-            )
+            await activity.update(ActivityContent(state: state, staleDate: nil))
         }
     }
-    
-    // MARK: - End Live Activity
+
+    // MARK: - End
     func endCurrentActivity() async {
         guard let activity = currentActivity else { return }
-        
         let state = activity.content.state
         await activity.end(
             ActivityContent(state: state, staleDate: nil),
@@ -121,117 +99,12 @@ final class LiveActivityManager {
     }
 }
 
-// MARK: - Live Activity Widget View (for Widget Extension)
-/*
- Add this to a Widget Extension target:
- 
- struct CampaignLiveActivity: Widget {
-     var body: some WidgetConfiguration {
-         ActivityConfiguration(for: CampaignActivityAttributes.self) { context in
-             // Lock Screen View
-             LockScreenView(context: context)
-         } dynamicIsland: { context in
-             DynamicIsland {
-                 // Expanded regions
-                 DynamicIslandExpandedRegion(.leading) {
-                     Label {
-                         Text("\(context.state.totalConversions)")
-                             .fontWeight(.bold)
-                     } icon: {
-                         Image(systemName: "cart.fill")
-                     }
-                 }
-                 DynamicIslandExpandedRegion(.trailing) {
-                     Label {
-                         Text(String(format: "%.2f", context.state.currentROAS))
-                             .fontWeight(.bold)
-                     } icon: {
-                         Image(systemName: "chart.line.uptrend.xyaxis")
-                     }
-                 }
-                 DynamicIslandExpandedRegion(.center) {
-                     Text(context.attributes.campaignName)
-                         .font(.headline)
-                 }
-                 DynamicIslandExpandedRegion(.bottom) {
-                     ProgressView(value: min(context.state.budgetSpent / 10000, 1.0))
-                         .tint(.green)
-                 }
-             } compactLeading: {
-                 Image(systemName: "chart.bar.fill")
-                     .foregroundStyle(.green)
-             } compactTrailing: {
-                 Text("\(context.state.totalConversions)")
-                     .fontWeight(.bold)
-             } minimal: {
-                 Image(systemName: "chart.bar.fill")
-                     .foregroundStyle(.green)
-             }
-         }
-     }
- }
- 
- struct LockScreenView: View {
-     let context: ActivityViewContext<CampaignActivityAttributes>
-     
-     var body: some View {
-         VStack(spacing: 12) {
-             HStack {
-                 VStack(alignment: .leading) {
-                     Text(context.attributes.campaignName)
-                         .font(.headline)
-                     Text(context.attributes.productName)
-                         .font(.caption)
-                         .foregroundStyle(.secondary)
-                 }
-                 Spacer()
-                 Image(systemName: "chart.bar.fill")
-                     .font(.title)
-                     .foregroundStyle(.green)
-             }
-             
-             HStack(spacing: 24) {
-                 VStack {
-                     Text("\(context.state.totalConversions)")
-                         .font(.title2)
-                         .fontWeight(.bold)
-                     Text("Conversions")
-                         .font(.caption2)
-                         .foregroundStyle(.secondary)
-                 }
-                 
-                 VStack {
-                     Text(String(format: "%.2f", context.state.currentROAS))
-                         .font(.title2)
-                         .fontWeight(.bold)
-                         .foregroundStyle(.green)
-                     Text("ROAS")
-                         .font(.caption2)
-                         .foregroundStyle(.secondary)
-                 }
-                 
-                 VStack {
-                     Text("€\(Int(context.state.budgetSpent))")
-                         .font(.title2)
-                         .fontWeight(.bold)
-                     Text("Budget")
-                         .font(.caption2)
-                         .foregroundStyle(.secondary)
-                 }
-             }
-         }
-         .padding()
-     }
- }
-*/
-
-// MARK: - Integration Helper for Dashboard
+// MARK: - Integration helper on the dashboard
 extension DashboardViewModel {
-    
-    /// Starts a Live Activity to track campaign performance
+
+    /// Starts a Live Activity bound to the currently-filtered campaign cohort.
     func startLiveActivityTracking() {
         guard !filteredCreatives.isEmpty else { return }
-        
         LiveActivityManager.shared.startTracking(
             campaignName: "Vital Campaigns",
             productName: "\(creativeCount) créas actives",
@@ -240,8 +113,8 @@ extension DashboardViewModel {
             budget: totalBudget
         )
     }
-    
-    /// Updates the Live Activity with current data
+
+    /// Pushes the latest aggregate metrics into the running activity.
     func updateLiveActivity() {
         LiveActivityManager.shared.updateActivity(
             conversions: totalConversions,
