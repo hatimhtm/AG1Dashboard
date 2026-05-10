@@ -166,7 +166,7 @@ struct OverviewView: View {
                     } label: {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundStyle(.red)
-                            .symbolEffect(.bounce)
+                            .symbolEffect(.pulse)
                     }
                 }
             }
@@ -418,7 +418,7 @@ struct OverviewView: View {
                 
                 Image(systemName: "medal.fill")
                     .foregroundStyle(AppTheme.Colors.accentYellow)
-                    .symbolEffect(.bounce)
+                    .symbolEffect(.pulse)
             }
             
             ForEach(Array(viewModel.top5ByROAS.enumerated()), id: \.element.id) { index, creative in
