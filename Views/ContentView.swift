@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: DashboardViewModel
+    @Environment(DashboardViewModel.self) private var viewModel
     @State private var selectedTab: Tab = .overview
     @Environment(\.horizontalSizeClass) var sizeClass
     
@@ -82,5 +82,5 @@ struct ContentView: View {
 // MARK: - Preview
 #Preview {
     ContentView()
-        .environmentObject(DashboardViewModel())
+        .environment(DashboardViewModel())
 }

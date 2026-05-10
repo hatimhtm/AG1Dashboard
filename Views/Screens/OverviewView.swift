@@ -10,7 +10,7 @@ import SwiftUI
 import Charts
 
 struct OverviewView: View {
-    @EnvironmentObject var viewModel: DashboardViewModel
+    @Environment(DashboardViewModel.self) private var viewModel
     @Environment(\.horizontalSizeClass) var sizeClass
     
     @State private var selectedMonth: String?
@@ -421,5 +421,5 @@ struct OverviewView: View {
     NavigationStack {
         OverviewView()
     }
-    .environmentObject(DashboardViewModel())
+    .environment(DashboardViewModel())
 }

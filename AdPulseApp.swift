@@ -10,14 +10,14 @@ import SwiftUI
 
 @main
 struct AdPulseApp: App {
-    
-    // Main ViewModel shared across all views
-    @StateObject private var viewModel = DashboardViewModel()
-    
+
+    // Main ViewModel shared across all views (iOS 17 @Observable + .environment)
+    @State private var viewModel = DashboardViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel)
+                .environment(viewModel)
         }
     }
 }

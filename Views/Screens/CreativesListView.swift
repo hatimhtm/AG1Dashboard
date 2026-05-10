@@ -9,21 +9,24 @@
 import SwiftUI
 
 struct CreativesListView: View {
-    @EnvironmentObject var viewModel: DashboardViewModel
+    @Environment(DashboardViewModel.self) private var viewModel
     @State private var showFilters = false
     @State private var selectedCreative: Creative?
-    
+
     // iOS 17 search suggestions
     @State private var recentSearches: [String] = ["UGC", "Podcast", "Emma", "Vital Powder"]
-    
+
     var body: some View {
+        // Re-export the @Observable view-model as @Bindable so we can use $-bindings.
+        @Bindable var viewModel = viewModel
+
         VStack(spacing: 0) {
             controlsBar
-            
+
             if showFilters {
                 filtersPanel
             }
-            
+
             // Content
             if viewModel.isLoading {
                 LoadingView()
@@ -44,13 +47,12 @@ struct CreativesListView: View {
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Rechercher une créa, créateur, produit..."
         ) {
-            // iOS 17 Search Suggestions
+            // iOS 17 Search Suggestions — recent searches when query is empty.
             if viewModel.filterState.searchText.isEmpty {
                 ForEach(recentSearches, id: \.self) { suggestion in
                     Label(suggestion, systemImage: "clock.arrow.circlepath")
                         .searchCompletion(suggestion)
                 }
-                .searchSuggestionVisiblity(.visible)
             }
         }
         .sheet(item: $selectedCreative) { creative in
@@ -375,5 +377,5 @@ struct CreativePreviewCard: View {
     NavigationStack {
         CreativesListView()
     }
-    .environmentObject(DashboardViewModel())
+    .environment(DashboardViewModel())
 }

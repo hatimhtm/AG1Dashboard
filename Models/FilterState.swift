@@ -71,18 +71,19 @@ enum SortOption: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-// MARK: - Filter State (Observable)
+// MARK: - Filter State (iOS 17 @Observable)
 @MainActor
-class FilterState: ObservableObject {
-    
+@Observable
+final class FilterState {
+
     // Current filter selections
-    @Published var productFilter: ProductFilter = .all
-    @Published var monthFilter: MonthFilter = .all
-    @Published var statusFilter: StatusFilter = .all
-    @Published var contentTypeFilter: ContentTypeFilter = .all
-    @Published var creatorFilter: String = ""
-    @Published var searchText: String = ""
-    @Published var sortOption: SortOption = .roasDesc
+    var productFilter: ProductFilter = .all
+    var monthFilter: MonthFilter = .all
+    var statusFilter: StatusFilter = .all
+    var contentTypeFilter: ContentTypeFilter = .all
+    var creatorFilter: String = ""
+    var searchText: String = ""
+    var sortOption: SortOption = .roasDesc
     
     /// Resets all filters to default values
     func resetFilters() {

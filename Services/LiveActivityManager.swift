@@ -28,12 +28,13 @@ struct CampaignActivityAttributes: ActivityAttributes {
 
 // MARK: - Live Activity Manager
 @MainActor
-class LiveActivityManager: ObservableObject {
-    
+@Observable
+final class LiveActivityManager {
+
     static let shared = LiveActivityManager()
-    
-    @Published var currentActivity: Activity<CampaignActivityAttributes>?
-    @Published var isLiveActivitySupported: Bool = false
+
+    var currentActivity: Activity<CampaignActivityAttributes>?
+    var isLiveActivitySupported: Bool = false
     
     private init() {
         checkSupport()
