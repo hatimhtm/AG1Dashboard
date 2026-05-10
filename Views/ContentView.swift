@@ -47,19 +47,6 @@ struct ContentView: View {
         }
     }
 
-    @ToolbarContentBuilder
-    private func settingsToolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                showSettings = true
-                HapticsManager.selection()
-            } label: {
-                Image(systemName: "gearshape")
-            }
-            .accessibilityLabel("Réglages")
-        }
-    }
-
     // MARK: - iPad: Sidebar navigation
     private var iPadLayout: some View {
         NavigationSplitView {
@@ -68,7 +55,7 @@ struct ContentView: View {
                     .tag(tab)
             }
             .navigationTitle("AdPulse")
-            .toolbar { settingsToolbar() }
+            .adPulseSettingsToolbar(showSettings: $showSettings)
         } detail: {
             switch selectedTab {
             case .overview:  OverviewView()
@@ -82,7 +69,7 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             NavigationStack {
                 OverviewView()
-                    .toolbar { settingsToolbar() }
+                    .adPulseSettingsToolbar(showSettings: $showSettings)
             }
             .tabItem {
                 Label(Tab.overview.rawValue, systemImage: Tab.overview.icon)
@@ -91,12 +78,34 @@ struct ContentView: View {
 
             NavigationStack {
                 CreativesListView()
-                    .toolbar { settingsToolbar() }
+                    .adPulseSettingsToolbar(showSettings: $showSettings)
             }
             .tabItem {
                 Label(Tab.creatives.rawValue, systemImage: Tab.creatives.icon)
             }
             .tag(Tab.creatives)
+        }
+    }
+}
+
+// MARK: - Settings toolbar modifier
+
+private extension View {
+    /// Adds a top-trailing "gear" button that toggles the supplied binding.
+    /// Defined as a View extension (not a returning ToolbarContent) because
+    /// `toolbar(content:)` has multiple overloads and a function returning
+    /// `some ToolbarContent` resolves ambiguously at the call site.
+    func adPulseSettingsToolbar(showSettings: Binding<Bool>) -> some View {
+        toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showSettings.wrappedValue = true
+                    HapticsManager.selection()
+                } label: {
+                    Image(systemName: "gearshape")
+                }
+                .accessibilityLabel("Réglages")
+            }
         }
     }
 }
