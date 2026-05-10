@@ -119,7 +119,9 @@ struct FilterPill<Content: View>: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 10)
-            .background(isActive ? AppTheme.Colors.accentBlue.opacity(0.15) : .regularMaterial)
+            .background(isActive
+                        ? AnyShapeStyle(AppTheme.Colors.accentBlue.opacity(0.15))
+                        : AnyShapeStyle(.regularMaterial))
             .foregroundStyle(isActive ? AppTheme.Colors.accentBlue : AppTheme.Colors.textPrimary)
             .clipShape(Capsule())
         }

@@ -55,7 +55,7 @@ struct CSVParser {
         let columnMap = Dictionary(uniqueKeysWithValues: headers.enumerated().map { ($1, $0) })
         
         // Parse each data row
-        for (index, line) in lines.dropFirst().enumerated() {
+        for line in lines.dropFirst() {
             let values = parseCSVLine(line)
             
             guard values.count >= headers.count else { continue }
