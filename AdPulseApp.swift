@@ -19,5 +19,7 @@ struct AdPulseApp: App {
             ContentView()
                 .environment(viewModel)
         }
+        // SwiftData container — favorites + search history persist across launches.
+        .modelContainer(for: [FavoriteCreative.self, SearchHistoryItem.self])
     }
 }

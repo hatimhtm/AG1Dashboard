@@ -6,15 +6,18 @@
 //  Showcases search suggestions, swipe actions, and modern list design
 //
 
+import SwiftData
 import SwiftUI
 
 struct CreativesListView: View {
     @Environment(DashboardViewModel.self) private var viewModel
+    @Environment(\.modelContext) private var modelContext
+
+    @Query(sort: \SearchHistoryItem.lastUsed, order: .reverse)
+    private var searchHistory: [SearchHistoryItem]
+
     @State private var showFilters = false
     @State private var selectedCreative: Creative?
-
-    // iOS 17 search suggestions
-    @State private var recentSearches: [String] = ["UGC", "Podcast", "Emma", "Vital Powder"]
 
     var body: some View {
         // Re-export the @Observable view-model as @Bindable so we can use $-bindings.
@@ -47,19 +50,36 @@ struct CreativesListView: View {
             placement: .navigationBarDrawer(displayMode: .always),
             prompt: "Rechercher une créa, créateur, produit..."
         ) {
-            // iOS 17 Search Suggestions — recent searches when query is empty.
+            // iOS 17 search suggestions — persisted history (top 5 most-recent).
             if viewModel.filterState.searchText.isEmpty {
-                ForEach(recentSearches, id: \.self) { suggestion in
-                    Label(suggestion, systemImage: "clock.arrow.circlepath")
-                        .searchCompletion(suggestion)
+                ForEach(searchHistory.prefix(5)) { item in
+                    Label(item.query, systemImage: "clock.arrow.circlepath")
+                        .searchCompletion(item.query)
                 }
             }
+        }
+        .onSubmit(of: .search) {
+            recordSearch(viewModel.filterState.searchText)
         }
         .sheet(item: $selectedCreative) { creative in
             CreativeQuickView(creative: creative)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
+    }
+
+    /// Inserts or bumps a search-history entry. Runs on `.onSubmit(of: .search)`.
+    private func recordSearch(_ query: String) {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        if let existing = searchHistory.first(where: { $0.query == trimmed }) {
+            existing.lastUsed = Date()
+            existing.useCount += 1
+        } else {
+            modelContext.insert(SearchHistoryItem(query: trimmed))
+        }
+        try? modelContext.save()
     }
     
     // MARK: - Controls Bar

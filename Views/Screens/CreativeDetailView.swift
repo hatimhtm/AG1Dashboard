@@ -6,16 +6,24 @@
 //  Showcases advanced layouts, animations, and modern interactions
 //
 
+import SwiftData
 import SwiftUI
 
 struct CreativeDetailView: View {
     let creative: Creative
     @Environment(\.horizontalSizeClass) var sizeClass
     @Environment(\.dismiss) var dismiss
-    
+    @Environment(\.modelContext) private var modelContext
+
+    @Query private var favorites: [FavoriteCreative]
+
     @State private var showShareSheet = false
     @State private var selectedMetric: String?
     @State private var isAnimated = false
+
+    private var isFavorited: Bool {
+        favorites.contains(where: { $0.adName == creative.adName })
+    }
     
     // Adaptive grid
     private var kpiColumns: [GridItem] {
@@ -42,6 +50,17 @@ struct CreativeDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    toggleFavorite()
+                } label: {
+                    Image(systemName: isFavorited ? "star.fill" : "star")
+                        .symbolEffect(.bounce, value: isFavorited)
+                        .foregroundStyle(isFavorited ? AppTheme.Colors.accentYellow : AppTheme.Colors.textPrimary)
+                }
+                .accessibilityLabel(isFavorited ? "Retirer des favoris" : "Ajouter aux favoris")
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
                 Menu {
                     Button {
                         showShareSheet = true
@@ -49,15 +68,15 @@ struct CreativeDetailView: View {
                     } label: {
                         Label("Partager", systemImage: "square.and.arrow.up")
                     }
-                    
+
                     Button {
                         HapticsManager.impact(.medium)
                     } label: {
                         Label("Dupliquer", systemImage: "plus.square.on.square")
                     }
-                    
+
                     Divider()
-                    
+
                     Button(role: .destructive) {
                         HapticsManager.notification(.warning)
                     } label: {
@@ -67,6 +86,7 @@ struct CreativeDetailView: View {
                     Image(systemName: "ellipsis.circle")
                         .symbolRenderingMode(.hierarchical)
                 }
+                .accessibilityLabel("Plus d'actions")
             }
         }
         .onAppear {
@@ -322,6 +342,18 @@ struct CreativeDetailView: View {
         }
     }
     
+    // MARK: - Favorites toggle
+    private func toggleFavorite() {
+        if let existing = favorites.first(where: { $0.adName == creative.adName }) {
+            modelContext.delete(existing)
+            HapticsManager.impact(.light)
+        } else {
+            modelContext.insert(FavoriteCreative(adName: creative.adName))
+            HapticsManager.notification(.success)
+        }
+        try? modelContext.save()
+    }
+
     // MARK: - Helpers
     private func formatNumber(_ value: Int) -> String {
         let formatter = NumberFormatter()
