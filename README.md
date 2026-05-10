@@ -83,15 +83,15 @@ Reactive surface is pure `@Observable` — every mutation re-renders dependents 
 ```bash
 git clone https://github.com/hatimhtm/adpulse-ios.git
 cd adpulse-ios
-# Open the folder in Xcode 15+, target an iOS 17.0+ simulator or device.
+open AdPulse.xcodeproj
+# ⌘R to run on an iOS 17+ simulator or device. ⌘U to run the unit tests.
 ```
 
-Two extension targets need to be created in Xcode (one-time):
-
-- **Widget Extension** — see [`Widgets/SETUP.md`](Widgets/SETUP.md). Hosts `CampaignLiveActivity` and the Lock Screen view.
-- **Unit Test bundle** — see [`Tests/SETUP.md`](Tests/SETUP.md). Add the test files; run `⌘U`.
+All three targets — App, Widget Extension (Live Activity), Unit Tests — are wired up in `AdPulse.xcodeproj`. No extra setup needed.
 
 Mock data lives in `AdPulse-Data.csv` — 1,200 rows for the fictional **Vital** wellness brand. Column headers are in French (the original brief was for a French-speaking team); the data is parsed by `Services/CSVParser.swift`. Swap the CSV (or replace the parser with a network fetch) to wire up a real backend.
+
+> **Regenerating the Xcode project.** The project is generated from [`project.yml`](project.yml) via [XcodeGen](https://github.com/yonaskolb/XcodeGen). If you change the file layout, run `xcodegen generate` to refresh `AdPulse.xcodeproj`. Both files are committed; XcodeGen is only required when re-generating.
 
 ---
 

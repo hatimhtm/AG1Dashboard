@@ -1,0 +1,672 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E481903F67FF24A315FB114 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AE417D8477111602D0C623 /* OnboardingView.swift */; };
+		1EE33F5450E39F992EE05B73 /* FavoriteCreative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CCB482D0BAA826BFBD5CE2 /* FavoriteCreative.swift */; };
+		2C69BC08B7143A89D9BBB52A /* CSVParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6980A6E9FA359FEFCE7FD002 /* CSVParserTests.swift */; };
+		2E301645B27ABBCDDBA5C644 /* CampaignLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838EB5F9A6F7A775B3C8D832 /* CampaignLiveActivity.swift */; };
+		300E07670C3DBAF7485F031F /* AdPulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAA63FDAD826056D64A3A1D /* AdPulseApp.swift */; };
+		375782F0D9BFEAB8D6C26833 /* FilterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184E6642F5367B64FA2DB68 /* FilterState.swift */; };
+		37E30274934A793FAB044428 /* AdPulseWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A1B3FED6AE0C9F4B3BEB52 /* AdPulseWidgetBundle.swift */; };
+		395D264F4134500D7D046ECF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C5175E3B27C38D6391DD69 /* ContentView.swift */; };
+		3DE05936D8BB0780F78F6F95 /* Creative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1914E0999B8CD9DF00FE6 /* Creative.swift */; };
+		5BC479C5E82BF64AC7C80C3C /* DashboardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE9B59A3C7818405065D9CA /* DashboardViewModelTests.swift */; };
+		5DC45E66727F93689AC85D6A /* AdPulseWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		61FE072C7AF0F7EF026A7B76 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8E08DF85F07F8EA33A2931 /* LiveActivityManager.swift */; };
+		6718904C20A1D2F67BBA78C1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33243C6727FE46C285133E /* SettingsView.swift */; };
+		91D3596E891AA005008B509D /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307B1B1FA978174AFC0B202C /* CSVParser.swift */; };
+		AC3F67D81F01A732B68F7870 /* SearchHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77219860D9B5C1BDFDFEA421 /* SearchHistoryItem.swift */; };
+		BEA2CE8E928F76FF59F2910B /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E26B41DC7C970828A718BC /* Components.swift */; };
+		C0882694771A396D20E3A90E /* AnomalyDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB7E0E812DBAD6023B21360 /* AnomalyDetector.swift */; };
+		CC0D9B317DCA98A2CD7BA292 /* CreativesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A56C1206AF8CEB1378D43 /* CreativesListView.swift */; };
+		D648A1641B9984E5A8D6A92E /* CampaignActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C83A6C2F80EA35511F0C10C /* CampaignActivityAttributes.swift */; };
+		DDEC325C62FFE88A6BE59001 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68A821544AFB0415AE9BF64 /* Theme.swift */; };
+		DE3E39033F54B75668DD5F5B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3129476BA0D13ACAF8306FB3 /* DashboardViewModel.swift */; };
+		E476DEDFD212C3DA11313EE1 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC27614D57CE8F486433C18 /* OverviewView.swift */; };
+		E7695B83E49B5BC07519C015 /* CampaignActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C83A6C2F80EA35511F0C10C /* CampaignActivityAttributes.swift */; };
+		EFBF1EAD5BA001A98E25911E /* FilterStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFA16690DA9219CA982021 /* FilterStateTests.swift */; };
+		F3F5EB51FAB73C296146B897 /* CreativeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C5CAE7919659C9EA1EE8B9 /* CreativeDetailView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FEF4B2FFAF15372927FA8F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3A3A9076AE64A208AB66423 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0210D907DAD87FDB3576C668;
+			remoteInfo = AdPulseWidgets;
+		};
+		44978AC0FACC4B9109F23227 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F3A3A9076AE64A208AB66423 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8695D96982C516B32931864C;
+			remoteInfo = AdPulse;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		764764203D7903C34CEE4838 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5DC45E66727F93689AC85D6A /* AdPulseWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = AdPulseWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		21A1914E0999B8CD9DF00FE6 /* Creative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creative.swift; sourceTree = "<group>"; };
+		22A1B3FED6AE0C9F4B3BEB52 /* AdPulseWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPulseWidgetBundle.swift; sourceTree = "<group>"; };
+		307B1B1FA978174AFC0B202C /* CSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
+		3129476BA0D13ACAF8306FB3 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		3157598C8DE4C68490DF26D7 /* AdPulseTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AdPulseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F988EF17AD904A23084FA48 /* AdPulse.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AdPulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6980A6E9FA359FEFCE7FD002 /* CSVParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParserTests.swift; sourceTree = "<group>"; };
+		6B4A56C1206AF8CEB1378D43 /* CreativesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativesListView.swift; sourceTree = "<group>"; };
+		77219860D9B5C1BDFDFEA421 /* SearchHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItem.swift; sourceTree = "<group>"; };
+		7FE9B59A3C7818405065D9CA /* DashboardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModelTests.swift; sourceTree = "<group>"; };
+		82CCB482D0BAA826BFBD5CE2 /* FavoriteCreative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCreative.swift; sourceTree = "<group>"; };
+		838EB5F9A6F7A775B3C8D832 /* CampaignLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignLiveActivity.swift; sourceTree = "<group>"; };
+		85B57C1B0DCB3415B908F135 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8B33243C6727FE46C285133E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8C83A6C2F80EA35511F0C10C /* CampaignActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignActivityAttributes.swift; sourceTree = "<group>"; };
+		91AE417D8477111602D0C623 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		A2C5CAE7919659C9EA1EE8B9 /* CreativeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeDetailView.swift; sourceTree = "<group>"; };
+		AF8E08DF85F07F8EA33A2931 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		B0E26B41DC7C970828A718BC /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		B184E6642F5367B64FA2DB68 /* FilterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterState.swift; sourceTree = "<group>"; };
+		BDAA63FDAD826056D64A3A1D /* AdPulseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdPulseApp.swift; sourceTree = "<group>"; };
+		C68A821544AFB0415AE9BF64 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		D4AFA16690DA9219CA982021 /* FilterStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStateTests.swift; sourceTree = "<group>"; };
+		EEB7E0E812DBAD6023B21360 /* AnomalyDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnomalyDetector.swift; sourceTree = "<group>"; };
+		EFC27614D57CE8F486433C18 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
+		F9C5175E3B27C38D6391DD69 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0AF684BD835A75526FDF9D27 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC7B4409D9B0C1C434955343 /* Components */,
+				765F0CA66205B0ED7D8C4FEC /* Screens */,
+				F9C5175E3B27C38D6391DD69 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185CC24B8E78F520D52155F3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8C83A6C2F80EA35511F0C10C /* CampaignActivityAttributes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1C4EC7A2407FEECF7E8E6476 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EEB7E0E812DBAD6023B21360 /* AnomalyDetector.swift */,
+				307B1B1FA978174AFC0B202C /* CSVParser.swift */,
+				AF8E08DF85F07F8EA33A2931 /* LiveActivityManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		74C186243A8A1AED5FE91F9B = {
+			isa = PBXGroup;
+			children = (
+				D90E08F24A2DF4FE1AD7BE03 /* Models */,
+				1C4EC7A2407FEECF7E8E6476 /* Services */,
+				185CC24B8E78F520D52155F3 /* Shared */,
+				CBFC1ABA04DBB9157785D395 /* Tests */,
+				DB7671825C52EAFB7E89778E /* Theme */,
+				E0B0742FD92BE84FB294D023 /* ViewModels */,
+				0AF684BD835A75526FDF9D27 /* Views */,
+				79BAB4E5C83E5CAD2F11CF29 /* Widgets */,
+				BDAA63FDAD826056D64A3A1D /* AdPulseApp.swift */,
+				9EFA52ADFC9ABB5461D89469 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		765F0CA66205B0ED7D8C4FEC /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A2C5CAE7919659C9EA1EE8B9 /* CreativeDetailView.swift */,
+				6B4A56C1206AF8CEB1378D43 /* CreativesListView.swift */,
+				91AE417D8477111602D0C623 /* OnboardingView.swift */,
+				EFC27614D57CE8F486433C18 /* OverviewView.swift */,
+				8B33243C6727FE46C285133E /* SettingsView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		7987EC3934B20BFD9647CB5C /* AdPulseTests */ = {
+			isa = PBXGroup;
+			children = (
+				6980A6E9FA359FEFCE7FD002 /* CSVParserTests.swift */,
+				7FE9B59A3C7818405065D9CA /* DashboardViewModelTests.swift */,
+				D4AFA16690DA9219CA982021 /* FilterStateTests.swift */,
+			);
+			path = AdPulseTests;
+			sourceTree = "<group>";
+		};
+		79BAB4E5C83E5CAD2F11CF29 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				22A1B3FED6AE0C9F4B3BEB52 /* AdPulseWidgetBundle.swift */,
+				838EB5F9A6F7A775B3C8D832 /* CampaignLiveActivity.swift */,
+				85B57C1B0DCB3415B908F135 /* Info.plist */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		9EFA52ADFC9ABB5461D89469 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F988EF17AD904A23084FA48 /* AdPulse.app */,
+				3157598C8DE4C68490DF26D7 /* AdPulseTests.xctest */,
+				10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC7B4409D9B0C1C434955343 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B0E26B41DC7C970828A718BC /* Components.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CBFC1ABA04DBB9157785D395 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7987EC3934B20BFD9647CB5C /* AdPulseTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D90E08F24A2DF4FE1AD7BE03 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				21A1914E0999B8CD9DF00FE6 /* Creative.swift */,
+				82CCB482D0BAA826BFBD5CE2 /* FavoriteCreative.swift */,
+				B184E6642F5367B64FA2DB68 /* FilterState.swift */,
+				77219860D9B5C1BDFDFEA421 /* SearchHistoryItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DB7671825C52EAFB7E89778E /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				C68A821544AFB0415AE9BF64 /* Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		E0B0742FD92BE84FB294D023 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3129476BA0D13ACAF8306FB3 /* DashboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0210D907DAD87FDB3576C668 /* AdPulseWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5FF023964B01C4A8AF5637A /* Build configuration list for PBXNativeTarget "AdPulseWidgets" */;
+			buildPhases = (
+				1B971140873B09692E17A65F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AdPulseWidgets;
+			packageProductDependencies = (
+			);
+			productName = AdPulseWidgets;
+			productReference = 10AF19FF0EC8E83C5B5063D9 /* AdPulseWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		6F79A9544D28A6EF989E95AC /* AdPulseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8994078114BAC6D8E805A050 /* Build configuration list for PBXNativeTarget "AdPulseTests" */;
+			buildPhases = (
+				D7AA5884C40844F04029E824 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A341E31A26FF5974DA0070BD /* PBXTargetDependency */,
+			);
+			name = AdPulseTests;
+			packageProductDependencies = (
+			);
+			productName = AdPulseTests;
+			productReference = 3157598C8DE4C68490DF26D7 /* AdPulseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8695D96982C516B32931864C /* AdPulse */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DF6252E65F3818D50C166F5 /* Build configuration list for PBXNativeTarget "AdPulse" */;
+			buildPhases = (
+				56127F8A2C0DFB76435C2DD1 /* Sources */,
+				764764203D7903C34CEE4838 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48D2B932FD14437F999101EF /* PBXTargetDependency */,
+			);
+			name = AdPulse;
+			packageProductDependencies = (
+			);
+			productName = AdPulse;
+			productReference = 4F988EF17AD904A23084FA48 /* AdPulse.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F3A3A9076AE64A208AB66423 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					0210D907DAD87FDB3576C668 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					6F79A9544D28A6EF989E95AC = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					8695D96982C516B32931864C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DCD4D61A9D6B6CD2335B1519 /* Build configuration list for PBXProject "AdPulse" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 74C186243A8A1AED5FE91F9B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 9EFA52ADFC9ABB5461D89469 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8695D96982C516B32931864C /* AdPulse */,
+				6F79A9544D28A6EF989E95AC /* AdPulseTests */,
+				0210D907DAD87FDB3576C668 /* AdPulseWidgets */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B971140873B09692E17A65F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37E30274934A793FAB044428 /* AdPulseWidgetBundle.swift in Sources */,
+				E7695B83E49B5BC07519C015 /* CampaignActivityAttributes.swift in Sources */,
+				2E301645B27ABBCDDBA5C644 /* CampaignLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56127F8A2C0DFB76435C2DD1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				300E07670C3DBAF7485F031F /* AdPulseApp.swift in Sources */,
+				C0882694771A396D20E3A90E /* AnomalyDetector.swift in Sources */,
+				91D3596E891AA005008B509D /* CSVParser.swift in Sources */,
+				D648A1641B9984E5A8D6A92E /* CampaignActivityAttributes.swift in Sources */,
+				BEA2CE8E928F76FF59F2910B /* Components.swift in Sources */,
+				395D264F4134500D7D046ECF /* ContentView.swift in Sources */,
+				3DE05936D8BB0780F78F6F95 /* Creative.swift in Sources */,
+				F3F5EB51FAB73C296146B897 /* CreativeDetailView.swift in Sources */,
+				CC0D9B317DCA98A2CD7BA292 /* CreativesListView.swift in Sources */,
+				DE3E39033F54B75668DD5F5B /* DashboardViewModel.swift in Sources */,
+				1EE33F5450E39F992EE05B73 /* FavoriteCreative.swift in Sources */,
+				375782F0D9BFEAB8D6C26833 /* FilterState.swift in Sources */,
+				61FE072C7AF0F7EF026A7B76 /* LiveActivityManager.swift in Sources */,
+				0E481903F67FF24A315FB114 /* OnboardingView.swift in Sources */,
+				E476DEDFD212C3DA11313EE1 /* OverviewView.swift in Sources */,
+				AC3F67D81F01A732B68F7870 /* SearchHistoryItem.swift in Sources */,
+				6718904C20A1D2F67BBA78C1 /* SettingsView.swift in Sources */,
+				DDEC325C62FFE88A6BE59001 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7AA5884C40844F04029E824 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C69BC08B7143A89D9BBB52A /* CSVParserTests.swift in Sources */,
+				5BC479C5E82BF64AC7C80C3C /* DashboardViewModelTests.swift in Sources */,
+				EFBF1EAD5BA001A98E25911E /* FilterStateTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48D2B932FD14437F999101EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0210D907DAD87FDB3576C668 /* AdPulseWidgets */;
+			targetProxy = 20FEF4B2FFAF15372927FA8F /* PBXContainerItemProxy */;
+		};
+		A341E31A26FF5974DA0070BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8695D96982C516B32931864C /* AdPulse */;
+			targetProxy = 44978AC0FACC4B9109F23227 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		50CCF44791836E1F32CBFC54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse.AdPulseTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdPulse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AdPulse";
+			};
+			name = Release;
+		};
+		5A6596B2BB83C606BE375406 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		61BB820540C00E8618E78B5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AdPulse;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9864DFD8F8DB0361173F1ABE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		997622906CC4CEF27BDA6822 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AdPulse;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9EC82B3CBC933762AFFCF7CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AdPulseWidgets;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse.AdPulseWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		BAEA7E020EC3F578D9BF5583 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse.AdPulseTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AdPulse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AdPulse";
+			};
+			name = Debug;
+		};
+		F9BAAA9C1BCA20DF44484A1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AdPulseWidgets;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hatim.adpulse.AdPulseWidgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6DF6252E65F3818D50C166F5 /* Build configuration list for PBXNativeTarget "AdPulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				997622906CC4CEF27BDA6822 /* Debug */,
+				61BB820540C00E8618E78B5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8994078114BAC6D8E805A050 /* Build configuration list for PBXNativeTarget "AdPulseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAEA7E020EC3F578D9BF5583 /* Debug */,
+				50CCF44791836E1F32CBFC54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A5FF023964B01C4A8AF5637A /* Build configuration list for PBXNativeTarget "AdPulseWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9BAAA9C1BCA20DF44484A1D /* Debug */,
+				9EC82B3CBC933762AFFCF7CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DCD4D61A9D6B6CD2335B1519 /* Build configuration list for PBXProject "AdPulse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9864DFD8F8DB0361173F1ABE /* Debug */,
+				5A6596B2BB83C606BE375406 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F3A3A9076AE64A208AB66423 /* Project object */;
+}

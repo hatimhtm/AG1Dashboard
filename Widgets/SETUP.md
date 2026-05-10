@@ -1,21 +1,20 @@
-# Widget Extension setup
+# Widget Extension
 
-The Live Activity is implemented but needs a Widget Extension target in Xcode.
+The Widget Extension target is **already wired up** by `project.yml` / `AdPulse.xcodeproj`. You don't need to add anything in Xcode — just build and run.
 
-## Steps (one-time)
+The Live Activity surface lives here:
 
-1. Open the project in Xcode.
-2. **File → New → Target → Widget Extension** (under iOS).
-3. Name: `AdPulseWidgets` · uncheck "Include Live Activity" (we already have the code).
-4. **Delete** the auto-generated `AdPulseWidgets.swift` and `AdPulseWidgetsLiveActivity.swift` files inside the new target — we'll wire ours in.
-5. Add the following files to the `AdPulseWidgets` target via *File Inspector → Target Membership*:
-   - `Widgets/AdPulseWidgetBundle.swift`
-   - `Widgets/CampaignLiveActivity.swift`
-   - `Shared/CampaignActivityAttributes.swift` (must be in **both** App and Widget targets)
-6. In the App target's `Info.plist`, ensure `NSSupportsLiveActivities = YES`.
-7. Set the Widget Extension's deployment target to **iOS 17.0+** (matches the App).
-8. Build & run on a device or simulator (Live Activities work in the simulator from iOS 16.2).
+- `AdPulseWidgetBundle.swift` — `@main` for the `AdPulseWidgets` extension
+- `CampaignLiveActivity.swift` — Lock Screen + Dynamic Island regions
+- `Info.plist` — `NSExtensionPointIdentifier = com.apple.widgetkit-extension`
 
-## Triggering the activity from the app
+`Shared/CampaignActivityAttributes.swift` is included in **both** the App and the Widget targets so they compile against the same activity type.
 
-`DashboardViewModel.startLiveActivityTracking()` starts a Live Activity bound to the currently-filtered campaign cohort. Wire it to a button in the Settings or Overview screen, or have the anomaly detector fire it automatically (see `Services/AnomalyDetector.swift`).
+## Running it
+
+1. Select the `AdPulse` scheme in Xcode (it builds both targets).
+2. Run on iOS 17+ simulator or device.
+3. Open Settings inside the app → toggle "Suivre la cohorte filtrée".
+4. The Live Activity appears on the Lock Screen and (on devices with Dynamic Island) in the island.
+
+If the activity doesn't appear, check that `NSSupportsLiveActivities = YES` is set in the App target's Info.plist (it is, via `INFOPLIST_KEY_NSSupportsLiveActivities` in `project.yml`).
