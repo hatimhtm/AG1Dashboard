@@ -47,7 +47,8 @@ struct ContentView: View {
         }
     }
 
-    private var settingsToolbar: some ToolbarContent {
+    @ToolbarContentBuilder
+    private func settingsToolbar() -> some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button {
                 showSettings = true
@@ -67,7 +68,7 @@ struct ContentView: View {
                     .tag(tab)
             }
             .navigationTitle("AdPulse")
-            .toolbar { settingsToolbar }
+            .toolbar { settingsToolbar() }
         } detail: {
             switch selectedTab {
             case .overview:  OverviewView()
@@ -81,7 +82,7 @@ struct ContentView: View {
         TabView(selection: $selectedTab) {
             NavigationStack {
                 OverviewView()
-                    .toolbar { settingsToolbar }
+                    .toolbar { settingsToolbar() }
             }
             .tabItem {
                 Label(Tab.overview.rawValue, systemImage: Tab.overview.icon)
@@ -90,7 +91,7 @@ struct ContentView: View {
 
             NavigationStack {
                 CreativesListView()
-                    .toolbar { settingsToolbar }
+                    .toolbar { settingsToolbar() }
             }
             .tabItem {
                 Label(Tab.creatives.rawValue, systemImage: Tab.creatives.icon)

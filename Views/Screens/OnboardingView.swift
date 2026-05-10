@@ -120,7 +120,10 @@ private struct OnboardingPageView: View {
                 Image(systemName: page.symbol)
                     .font(.system(size: 80, weight: .bold))
                     .foregroundStyle(AppTheme.Colors.ink)
-                    .symbolEffect(.bounce, options: .repeating)
+                    // .pulse is IndefiniteSymbolEffect-conforming on iOS 17 — .bounce
+                    // only conforms on iOS 18+, so .repeating with .bounce trips a
+                    // Swift 6 conformance error.
+                    .symbolEffect(.pulse, options: .repeating)
             }
 
             VStack(spacing: 12) {

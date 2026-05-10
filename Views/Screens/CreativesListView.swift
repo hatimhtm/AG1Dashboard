@@ -140,7 +140,9 @@ struct CreativesListView: View {
                 .font(.subheadline)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
-                .background(viewModel.filterState.hasActiveFilters ? AppTheme.Colors.accentBlue.opacity(0.15) : .regularMaterial)
+                .background(viewModel.filterState.hasActiveFilters
+                            ? AnyShapeStyle(AppTheme.Colors.accentBlue.opacity(0.15))
+                            : AnyShapeStyle(.regularMaterial))
                 .foregroundStyle(viewModel.filterState.hasActiveFilters ? AppTheme.Colors.accentBlue : AppTheme.Colors.textPrimary)
                 .clipShape(Capsule())
             }
@@ -167,12 +169,17 @@ struct CreativesListView: View {
     
     // MARK: - Filters Panel
     private var filtersPanel: some View {
-        VStack(spacing: 16) {
+        // @Bindable rewraps the @Environment view-model so $-bindings work
+        // inside this computed property (the wrapper declared in body() doesn't
+        // reach down here).
+        @Bindable var viewModel = viewModel
+
+        return VStack(spacing: 16) {
             HStack(spacing: 16) {
                 FilterDropdown(title: "Produit", selection: $viewModel.filterState.productFilter)
                 FilterDropdown(title: "Type", selection: $viewModel.filterState.contentTypeFilter)
             }
-            
+
             HStack(spacing: 16) {
                 FilterDropdown(title: "Mois", selection: $viewModel.filterState.monthFilter)
                 FilterDropdown(title: "Statut", selection: $viewModel.filterState.statusFilter)
